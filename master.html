@@ -1,0 +1,1680 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
+<script src="js/mobiscroll.javascript.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://unpkg.com/metaapi.cloud-sdk/index.js"></script>
+<script type="text/javascript" src="master.js"></script>
+<script type="text/javascript" src="quotes.js"></script>
+<link href="loader.css" rel="stylesheet" />
+<style>
+
+.tfgreen {
+  background-color: lightgreen;
+  border-radius: 2px;
+  color: white;
+}
+
+.tfred {
+  background-color: lightcoral;
+  border-radius: 2px;
+  color: white;
+}
+
+.profit {
+  border-left: 7px solid blue;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.loss {
+  border-left: 7px solid red;
+  border-radius: 5px 0px 0px 5px;
+}
+.canvasjs-chart-canvas {
+  border-radius: 50px;
+}
+.neu {
+border-radius: 50px;
+background: white;
+box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+	::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 5px;
+  height:5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: light-grey; 
+}
+
+#top {
+	z-index: 10; /* make the header sit on top */
+	background: white; /* transparent background won't look right here */
+}
+body {
+  overflow-y: auto;
+  height: 100%;
+  padding-top: 5%; /* set this to your header height */
+}
+.list-group {
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.scroll {
+	max-height: 90%;
+	overflow-y: scroll;
+}
+#h{
+	font-size:30px;
+}
+
+.list-group-item img{
+	height: 30%;
+    width: 30%;
+    border-radius: 5%;
+}
+#s {
+	overflow-x:auto;
+    overflow-y:hidden;
+    min-height:300px;
+
+}
+
+.card .g{
+    min-height: 300px;
+    min-width: 300px;
+}
+.mbsc-ms .micons {
+    font-family: inherit;
+}
+
+.mbsc-ms .micons:before {
+    font-family: 'icons_general';
+}
+
+.md-navigation .md-tab {
+    display: none;
+}
+
+.md-navigation .md-tab-sel {
+    display: block;
+    height: 100%;
+    background: #fff;
+    font-size: 18px;
+    
+    color: #333;
+    font-family: "myriad-pro", sans-serif, verdana;
+}
+
+.md-navigation .md-title {
+    text-align: center;
+    font-weight: 100;
+    color: #333;
+}
+
+.md-navigation .md-img-cont {
+    text-align: center;
+}
+
+.md-navigation .md-img-cont img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.md-navigation .md-comp-title {
+    
+}
+
+.md-navigation .md-comp-subtitle {
+    
+}
+
+.md-navigation .md-comp-sub {
+    text-align: left;
+   
+    border-bottom: 1px solid #d6d6d6;
+    
+}
+
+.md-navigation .md-comp-c {
+    background: #f2f2f2;
+    
+}
+
+.md-navigation .md-comp-table {
+    display: table;
+    width: 100%;
+}
+
+.md-navigation .md-comp-cell {
+    display: table-cell;
+    
+}
+
+.md-navigation .md-comp-cell img {
+    display: block;
+    max-width: 100%;
+}
+
+.md-navigation .md-comp-desc {
+    font-size: 15px;
+    
+}
+
+.md-navigation .md-cloud-desc {
+    
+}
+
+#de {
+
+	width:150px;
+}
+
+.custom {
+
+	float: left;
+}
+
+.f {
+	font-size: 10px;
+}
+
+.canvasjs-chart-toolbar {
+    left: 0 !important;
+    right: auto !important;    
+}
+
+</style>
+
+</head>
+
+<body>
+	<div class="md-navigation">
+
+    <ul id="demo" class="mbsc-cloak">
+        <li data-tab="md-tab-iphone" data-icon="empty micons icon-iphone_6" data-selected="true">Quotes</li>
+        <li data-tab="md-tab-acc" data-icon="empty micons icon-iphone_accessories">Chart</li>
+        <li data-tab="md-tab-comp" data-icon="empty micons icon-compare_iphone_models">News</li>
+        <li data-tab="md-tab-ios" data-icon="empty micons icon-ios_8">MCHEL</li>
+        <li data-tab="md-tab-icloud" data-icon="empty micons icon-icloud">Equity</li>
+    </ul>
+
+    <div class="scroll md-tab-iphone md-tab md-tab-sel">
+        
+    <div class="mbsc-form-group">
+    	<div class="mt-n3 d-flex flex-row justify-content-between container">
+        <div class="mbsc-form-group-title"><h2 class="noselect"><strong>Watchlist</strong></h2></div>
+        <div><h3 class="noselect">+<h3></div>
+    	</div>
+        <ul id="image" class="mbsc-cloak">
+            <li data-pair="EURUSD">
+            	
+                <img src="usd.png" />
+            	<div class="d-flex flex-row justify-content-between">
+            	<div class="">
+                <p class="noselect">EURUSD</p>
+                <small>Euro / U.S. Dollar</small>
+            	</div>
+            	<div class="">$.$$$$</div>
+              </div>
+              
+            </li>
+            <li>
+              <img src="usd.png" />
+            	<div class="d-flex flex-row justify-content-between">
+            	<div class="">
+                <p class="noselect">EURUSD</p>
+                <small>Euro / U.S. Dollar</small>
+            	</div>
+            	<div class="">$.$$$$</div>
+            	</div>
+            </li>
+            <li>
+              <img src="usd.png"/>
+            	<div class="d-flex flex-row justify-content-between">
+            	<div class="">
+                <p class="noselect">EURUSD</p>
+                <small>Euro / U.S. Dollar</small>
+            	</div>
+            	<div class="">$.$$$$</div>
+            	</div>
+            </li>
+            <li>
+              <img src="usd.png" />
+            	<div class="d-flex flex-row justify-content-between">
+            	<div class="">
+                <p class="noselect">EURUSD</p>
+                <small>Euro / U.S. Dollar</small>
+            	</div>
+            	<div class="">$.$$$$</div>
+            	</div>
+            </li>
+        </ul>
+
+    </div>
+
+    </div>
+    <div id="po" class="md-tab-acc md-tab">
+        
+    <div class="mb-5" style="width: 100vw; height: 75vh">
+	<div id="chartContainerm1" style="width: 100vw; height: 75vh"></div>
+	</div>
+
+	<div class="neu mt-5 mb-auto container d-flex flex-row justify-content-between">
+		<div id="t">EURUSD</div>
+        <div id="showList">M1</div>
+        <div id="showLis">Charts</div>
+        <div id="showLi">Risk</div>
+        <div id="theme">Light</div>
+	</div>
+
+    
+    
+<div id="list">
+    <ul id="demo-lv">
+        <li id = "m1" data-tf = "1">1 minute</li>
+        <li id = "m5" data-tf = "5">5 minutes</li>
+        <li id = "m15" data-tf = "15">15 minutes</li>
+        <li id = "1h" data-tf = "60">1 hour</li>
+        <li id = "4h" data-tf = "240">4 hour</li>
+        <li id = "1d" data-tf = "1440">1 day</li>
+        <li id = "1w" data-tf = "10080">1 week</li>
+        <li id = "1m" data-tf = "9">1 month</li>
+    </ul>
+</div>
+
+<div id="clist">
+    <ul id="cdemo-lv">
+        
+        <label>
+            Background
+            <input mbsc-input id="back" placeholder="Please Select..." value="#FFFFFF"/>
+        </label>
+        <label>
+            Grid
+            <input mbsc-input id="grid" placeholder="Please Select..." value="grey"/>
+        </label>
+        <label>
+            Bull Candle
+            <input mbsc-input id="bullcandle" placeholder="Please Select..." value="green"/>
+        </label>
+        <label>
+            Bear Candle
+            <input mbsc-input id="bearcandle" placeholder="Please Select..." value="red"/>
+        </label>
+        <label>
+            Bid Price Line
+            <input mbsc-input id="bidpriceline" placeholder="Please Select..." value="blue"/>
+        </label>
+        <label>
+            Ask Price Line
+            <input mbsc-input id="askpriceline" placeholder="Please Select..." value="red"/>
+        </label>
+        <label>
+            Trade Levels
+            <input mbsc-input id="tradelevels" placeholder="Please Select..." value="#000000"/>
+        </label>
+        <label>
+            Stop Levels
+            <input mbsc-input id="stoplevels" placeholder="Please Select..." value="red"/>
+        </label>
+        <label>
+            Buy Zone
+            <input mbsc-input id="buyzone" placeholder="Please Select..." value="blue"/>
+        </label>
+        <label>
+            Sell Zone
+            <input mbsc-input id="sellzone" placeholder="Please Select..." value="red"/>
+        </label>
+        
+        
+    </ul>
+</div>
+
+<div id="rlist">
+    <ul id="rdemo-lv">
+    	<div class="mbsc-form-group">
+    	<div class="mbsc-form-group-title">Select</div>
+        <label>
+            Risk on Equity
+            <select mbsc-dropdown>
+                <option>Select</option>
+                <option value="1">1%</option>
+                <option value="2">2%</option>
+                <option value="3">3%</option>
+                <option value="4">4%</option>
+                <option value="5">5%</option>
+            </select>
+        </label>
+    </div>
+    </ul>
+</div>
+  </div>
+    
+    <div class="md-tab-comp md-tab">
+        <div class = "container-fluid">
+<div id="top" class="fixed-top d-flex flex-column container-fluid p-2">
+	<h5 id="h">News</h5>
+</div>
+<div onscroll="scrollFunction()" id="l" class="list-group list-group-flush mt-5">
+<div class="list-group-item flex-row align-items-start">
+	<h5>Upcoming Calendar Events</h5>
+</div>
+<div class="list-group-item">
+<div id="s" class="d-flex flex-row flex-nowrap">
+
+</div>
+</div>
+<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+	<div class="d-flex justify-content-between">
+    	<p class="mb-1 mr-1">China Is Set to Reduce Dollar’s Influence on Yuan Trading Basket</p>
+        <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iETAfrag.tAs/v1/360x-1.jpg" style="width: 35%; height: 12.5%;"/>
+    </div>
+    <div class="d-flex flex-row">
+      <p class="mb-1 mr-1">Bloomberg</p>
+      <small class="d-flex align-items-center">3 days ago</small>
+    </div>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">News Heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+</div>
+</div>
+    </div>
+    <div class="scroll md-tab-ios md-tab">
+    	<div class="d-flex flex-column">
+    		<!--<h3 class="mb-auto container">Equity</h3>
+        <div id="e" class="mb-1 container"><strong>$12,345</strong></div>
+        -->
+        <div class="mb-5 neu" style="width: 100vw; height: 70vh;">
+          <div class="d-flex flex-row">
+          <div><h3 class="mb-auto container pl-4 pt-3">Equity </h3></div>
+          <div class="blob green flex-align-center"></div>
+          </div>
+        <div id="e" class="pl-4 mb-1 container"><strong>$12,345</strong></div>
+        <div class="d-flex flex-row pl-4">
+        <div id="perc" class="arrow-up mb-5"></div>
+        <div><small>10%</small></div>
+        </div>
+      <div id="chartContainer2" style="width: 100vw; height: 40vh"></div>
+      <div class="mt-5 mb-5 container d-flex flex-row justify-content-between">
+  			<div class="tfgreen" id="eqd1">D1</div>
+  			<div class="tfgreen" id="eqw1">1W</div>
+  			<div class="tfgreen" id="eq3m">3M</div>
+  			<div class="tfgreen" id="eq1y">1Y</div>
+  			<div class="tfgreen" id="eq5y">5Y</div>
+  			<div class="tfgreen" id="eqall">All</div>
+  		</div>
+    </div>
+    
+
+    
+      <!--  		
+      <div class="mt-5 mb-5 container d-flex flex-row justify-content-between">
+  			<div>D1</div>
+  			<div>1W</div>
+  			<div>3M</div>
+  			<div>1Y</div>
+  			<div>5Y</div>
+  			<div>All</div>
+      </div>
+      -->
+
+      <div class="container mt-5">
+      <div class="neu card">
+      <div class="d-flex flex-column m-auto">
+        <div class="mt-auto"><h2>MCHEL Analytics</h2></div>
+        <div class="d-flex justify-content-between">
+          <div class="neu card d-flex flex-column">
+            <div>Winrate&nbsp;<a class="mbsc-ic mbsc-ic-info" tabindex="0" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?"></a></div>
+            <div><small>% of trades in profit</small></div>
+            <div id="wr">72%</div>
+          </div>
+          <div class="neu card d-flex flex-column">
+            <div>Loss Recovered&nbsp;<span class="mbsc-ic mbsc-ic-info"></span></div>
+            <div id="lr">100%</div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="neu card d-flex flex-column">
+            <div>Total Return&nbsp;<span class="mbsc-ic mbsc-ic-info"></span></div>
+            <div id="tr">10%</div>
+          </div>
+          <div class="neu card d-flex flex-column">
+            <div>Drawdown&nbsp;<span class="mbsc-ic mbsc-ic-info"></span></div>
+            <div id="dr">100%</div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="neu card d-flex flex-column">
+            <div>Pips Collected&nbsp;<span class="mbsc-ic mbsc-ic-info"></span></div>
+            <div id="wr">72%</div>
+          </div>
+          <div class="neu card d-flex flex-column">
+            <div>Loss Recovered&nbsp;<span class="mbsc-ic mbsc-ic-info"></span></div>
+            <div id="lr">100%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+    </div>
+    <div class="scroll md-tab-icloud md-tab" style="width: auto">
+        <div class="d-flex flex-column">
+    	<h3 class="mb-auto container">Equity</h3>
+        <div id="e" class="mb-1 container"><strong>$12,345</strong></div>
+        <div class="mb-5" style="width: 100vw; height: 40vh">
+  		<div id="chartContainer" style="width: 100vw; height: 40vh"></div>
+  	</div>
+  		<div class="mt-5 mb-5 container d-flex flex-row justify-content-between">
+  			<div>D1</div>
+  			<div>1W</div>
+  			<div>3M</div>
+  			<div>1Y</div>
+  			<div>5Y</div>
+  			<div>All</div>
+  		</div>
+  		<div class="list-group">
+
+<div class="list-group-item list-group-flush flex-column align-items-start">
+    <h4>Active Trades</h4>
+</div>
+<div class="list-group-item flex-column align-items-start">
+    <div class="d-flex justify-content-between profit">
+      <p class="mb-1">EUR/USD</p>
+      <p>+15.35</p>
+    </div>
+    
+    
+  </div>
+
+  <div class="list-group-item flex-column align-items-start">
+    <div class="d-flex justify-content-between loss">
+      <p class="mb-1">EUR/USD</p>
+      <p>+15.35</p>
+    </div>
+    
+    
+  </div>
+
+  <div class="list-group-item flex-column align-items-start">
+    <div class="d-flex justify-content-between profit">
+      <p class="mb-1">EUR/USD</p>
+      <p>+15.35</p>
+    </div>
+    
+    
+  </div>
+</div>
+
+</div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+createQ(fx);
+	var nav = mobiscroll.nav('#demo', {
+    theme: 'ios',
+    themeVariant: 'light',
+    type: 'bottom',
+    onItemTap: function (event, inst) {
+        document.querySelector('.md-tab-sel').classList.remove('md-tab-sel');
+        document.querySelector('.' + event.target.getAttribute('data-tab')).classList.add('md-tab-sel');
+    }
+});
+	mobiscroll.listview('#image', {
+    enhance: true,
+    sortable: true,
+    swipe: true,
+    stages: [
+        {
+            percent: -50,
+            icon: 'remove',
+            text: 'Delete',
+            confirm: true,
+            action: function (event, inst) {
+                inst.remove(event.target);
+                return false;
+            }
+        }
+    ],
+    onItemTap: function (event, inst) {
+        console.log(event.target.getAttribute('data-pair'));
+        rC(event.target.getAttribute('data-pair'), default_tf);
+        // Your custom event handler goes here
+        nav.next();
+    }
+});
+function getFileName(x, y){
+  var s = x + y.toString()
+  return s
+}
+function pullChart(a,b) { // a is pair, b is timeframe
+  if (pairs.indexOf(a) >= 0) {
+    if(tf.indexOf(b) >= 0){
+      $.get(getFileName(a, b), getDataPointsFromCSV);
+    }
+  }
+
+}
+
+function converttf(v){
+  switch(v){
+    case 1:
+      return "M1";
+      break;
+    case 5:
+      return "M5";
+      break;
+    case 15:
+      return "M15";
+      break;
+    case 60:
+      return "H1";
+      break;
+    case 240:
+      return "H4";
+      break;
+    case 1440:
+      return "D1";
+      break;
+    case 10080:
+      return "W1";
+    case 9:
+      return "MN1";
+      break;
+    default:
+      return "M1";
+      break;
+  }
+}
+  
+function rC(n, p) {
+  document.getElementById('t').innerText = n;
+  document.getElementById('showList').innerText = converttf(p);
+  
+}
+function renderChart(a) {
+  switch(a) {
+  case "EURUSD":
+    $.get("eurusd_m1.csv", getDataPointsFromCSV);
+    break;
+  case "GBP/USD":
+    a.push(new FXPair("GBPUSD", "gbp.png","usd.png","British Pound / U.S. Dollar"));
+    break;
+  case "USD/CAD":
+    a.push(new FXPair("USDCAD", "usd.png","cad.png","U.S. Dollar / Canadian Dollar"));
+    break;
+  case "USD/JPY":
+    a.push(new FXPair("USDJPY", "usd.png","jpy.png","U.S. Dollar / Japanese Yen"));
+    break;
+  case "NZD/USD":
+    a.push(new FXPair("NZDUSD", "nzd.png","usd.png","New Zealand Dollar / U.S. Dollar"));
+    break;
+  case "AUD/USD":
+    a.push(new FXPair("AUDUSD", "aud.png","usd.png","Australian Dollar / U.S. Dollar"));
+    break;
+  case "USD/CHF":
+    a.push(new FXPair("USDCHF", "usd.png","chf.png","U.S. Dollar / Swiss Franc"));
+    break;
+  case "EUR/GBP":
+    a.push(new FXPair("EURGBP", "euro.svg","gbp.png","Euro / British Pound"));
+    break;
+  case "EUR/JPY":
+    a.push(new FXPair("EURJPY", "euro.svg","jpy.png","Euro / Japanese Yen"));
+    break;
+  case "EUR/CAD":
+    a.push(new FXPair("EURCAD", "euro.svg","cad.png","Euro / Canadian Dollar"));
+    break;
+  case "EUR/NZD":
+    a.push(new FXPair("EURNZD", "euro.svg","nzd.png","Euro / New Zealand Dollar"));
+    break;
+  case "EUR/AUD":
+    a.push(new FXPair("EURAUD", "euro.svg","aud.png","Euro / Australian Dollar"));
+    break;
+  case "EUR/CHF":
+    a.push(new FXPair("EURCHF", "euro.svg","usd.svg","Euro / Swiss Franc"));
+    break;
+  case "GBP/JPY":
+    a.push(new FXPair("GBPJPY", "gbp.png","jpy.png","British Pound / Japanese Yen"),);
+    break;
+  case "GBP/CAD":
+    a.push(new FXPair("GBPCAD", "gbp.png","cad.png","British Pound / Canadian Dollar"));
+    break;
+  case "GBP/CHF":
+    a.push(new FXPair("GBPCHF", "gbp.png","chf.png","British Pound / Swiss Franc"));
+    break;
+  case "GBP/NZD":
+    a.push(new FXPair("GBPNZD", "gbp.png","nzd.png","British Pound / New Zealand Dollar"));
+    break;
+  case "GBP/AUD":
+    a.push(new FXPair("GBPAUD", "gbp.png","aud.png","British Pound / Australian Dollar"));
+    break;
+  case "AUD/CAD":
+    a.push(new FXPair("AUDCAD", "aud.png","cad.png","Australian Dollar / Canadian Dollar"));
+    break;
+  case "AUD/CHF":
+    a.push(new FXPair("AUDCHF", "aud.png","chf.png","Australian Dollar / Swiss Franc"));
+    break;
+  case "AUD/JPY":
+    a.push(new FXPair("AUDJPY", "aud.png","jpy.png","Australian Dollar / Japanese Yen"));
+    break;
+  case "AUD/NZD":
+    a.push(new FXPair("AUDNZD", "aud.png","nzd.png","Australian Dollar / New Zealand Dollar"));
+    break;
+  case "NZD/CAD":
+    a.push(new FXPair("NZDCAD", "nzd.png","cad.png","New Zealand Dollar / Canadian Dollar"));
+    break;
+  case "NZD/CHF":
+    a.push(new FXPair("NZDCHF", "nzd.png","chf.png","New Zealand Dollar / Swiss Franc"));
+    break;
+  case "NZD/JPY":
+    a.push(new FXPair("NZDJPY", "nzd.png","jpy.png","New Zealand Dollar / Japanese Yen"));
+    break;
+  case "CAD/CHF":
+    a.push(new FXPair("CADCHF", "cad.png","chf.png","Canadian Dollar / Swiss Franc"));
+    break;
+  case "CAD/JPY":
+    a.push(new FXPair("CADJPY", "cad.png","jpy.png","Canadian Dollar / Japanese Yen"));
+    break;
+  case "CHF/JPY":
+    a.push(new FXPair("CHFJPY", "chf.png","jpy.png","Swiss Franc / Japanese Yen"));
+    break;
+  default:
+    return 0;
+}
+}
+
+	mobiscroll.optionlist('#dem', {
+    theme: 'ios',
+    themeVariant: 'light',
+    select: 'single',
+    display: 'top',
+    select: 'off',
+    layout: 'fixed'
+});
+
+	mobiscroll.settings = {
+    theme: 'ios',
+    themeVariant: 'light'
+};
+
+instance = mobiscroll.scroller('#de', {
+    display: 'inline',
+    rows:1,
+    snap: true,
+    cssClass: 'custom',
+    wheels: [
+        [{
+            circular: false,
+            
+            data: ["M1", "M5", "M15", "M30", "H1", "H4", "D1", "W1", "MN1"]
+        }]
+    ],
+    validate: function (event, inst) {
+        
+    },
+    formatValue: function (data) {
+        
+    },
+    parseValue: function (valueText) {
+        }
+});
+
+var list = mobiscroll.popup('#list', {
+        buttons: [],
+        display: 'bottom',
+        cssClass: 'mbsc-no-padding'
+    });
+
+mobiscroll.listview('#demo-lv', {
+    enhance: true,
+    swipe: false,
+    onItemTap: function (event, inst) {
+        list.hide();
+        document.getElementById('showList').innerText = converttf(parseInt(event.target.getAttribute('data-tf')));
+        mobiscroll.toast({
+            
+            message: event.target.textContent + ' clicked'
+        });
+    }
+});
+
+document
+    .getElementById('showList')
+    .addEventListener('click', function () {
+        list.show();
+    }, false);
+
+var clist = mobiscroll.popup('#clist', {
+        buttons: [],
+        display: 'bottom',
+        cssClass: 'mbsc-no-padding'
+    });
+
+mobiscroll.listview('#cdemo-lv', {
+    enhance: true,
+    swipe: false,
+    onItemTap: function (event, inst) {
+        clist.hide();
+        mobiscroll.toast({
+            message: event.target.textContent + ' clicked'
+        });
+    }
+});
+
+document
+    .getElementById('showLis')
+    .addEventListener('click', function () {
+        clist.show();
+    }, false);
+
+var rlist = mobiscroll.popup('#rlist', {
+        buttons: [],
+        display: 'bottom',
+        cssClass: 'mbsc-no-padding'
+    });
+
+mobiscroll.listview('#rdemo-lv', {
+    enhance: true,
+    swipe: false,
+    onItemTap: function (event, inst) {
+        rlist.hide();
+        mobiscroll.toast({
+            message: event.target.textContent + ' clicked'
+        });
+    }
+});
+
+document
+    .getElementById('showLi')
+    .addEventListener('click', function () {
+        rlist.show();
+    }, false);
+
+
+var instance = mobiscroll.color('#back', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance2 = mobiscroll.color('#grid', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance3 = mobiscroll.color('#bullcandle', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance4 = mobiscroll.color('#bearcandle', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance5 = mobiscroll.color('#bidpriceline', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance6 = mobiscroll.color('#askpriceline', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance7 = mobiscroll.color('#tradelevels', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance7 = mobiscroll.color('#stoplevels', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance7 = mobiscroll.color('#buyzone', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+
+var instance7 = mobiscroll.color('#sellzone', {
+    select: 'single',
+    navigation: 'vertical',
+    rows: 3
+});
+</script>
+
+
+<script type="text/javascript">
+  window.onload = function () {
+  	var dataPoints = [];
+
+var chart = new CanvasJS.Chart("chartContainerm1", {
+  zoomEnabled: true,
+  width: screen.width,
+  height: screen.height *.75,
+  animationEnabled: false,
+  theme: "light1", // "light1", "light2", "dark1", "dark2"
+  zoomType: 'x',
+  title: {
+    text: ""
+  },
+  subtitles: [{
+    text: ""
+  }],
+  axisX: {
+    interval: 1,
+    xValueType: "dateTime",
+    valueFormatString: "YYYY-MM-DD HH:mm:ss",
+    //viewportMinimum: new Date('November 13, 2020 15:30:00'),
+    //viewportMaximum: new Date('November 13, 2020 22:30:00'),
+    labelFontSize: 7,
+    labelAutoFit: true,
+    gridDashType: "solid",
+    zoomEnabled: true,
+    crosshair: {
+      enabled: true,
+    },
+    
+    navigator: {
+      slider: {
+        minimum: new Date('January 13, 2020 15:30:00'),
+        maximum: new Date('November 06, 2020 22:30:00')
+      }
+    }
+  },
+  axisY: {
+    prefix: "$",
+    title: "Price",
+    interval: .01000,
+    gridDashType: "dot",
+    labelAutoFit: true,
+    labelFontSize: 7,
+    crosshair: {
+      enabled: true,
+      valueFormatString: '0.00000'
+    },
+    navigator: {
+      slider: {
+        //minimum: new Date('November 13, 2020 15:30:00'),
+        //maximum: new Date('November 06, 2020 22:30:00')
+      }
+    },
+    gridDashType: "solid",
+    zoomEnabled: true 
+  },
+  toolTip: {
+    content: "Date: {x}<br /><strong>Price:</strong><br />Open: {y[0]}, Close: {y[3]}<br />High: {y[1]}, Low: {y[2]}"
+  },
+  data: [{
+    axisYType: "secondary",
+    type: "candlestick",
+    yValueFormatString: "$0.00000",
+    dataPoints: dataPoints
+  }],
+
+});
+
+$.get("EURUSD_1.csv", getDataPointsFromCSV);
+
+function getDataPointsFromCSV(csv) {
+  
+  var csvLines = points = [];
+  csvLines = csv.split(/[\r?\n|\r|\n]+/);
+  for (var i = 0; i < csvLines.length; i++) {
+    if (csvLines[i].length > 0) {
+      points = csvLines[i].split(",");
+      //console.log(points)
+      dataPoints.push({
+        x: new Date(
+          parseInt(points[0].split(/[ .:]+/)[2]),
+          parseInt(points[0].split(/[ .:]+/)[1] > 11 ? 11 : 10),
+          parseInt(points[0].split(/[ .:]+/)[0]),
+          parseInt(points[0].split(/[ .:]+/)[3]),
+          parseInt(points[0].split(/[ .:]+/)[4]),
+          0
+        ),
+        y: [
+          parseFloat(points[1]),
+          parseFloat(points[2]),
+          parseFloat(points[3]),
+          parseFloat(points[4])
+        ]
+      });
+    }
+  }
+  console.log(dataPoints)
+  chart.render();
+  drawLine(chart);
+}
+
+function drawLine(chart) {
+  var ctx = chart.ctx;
+
+  ctx.beginPath();
+  let b = new Date('November 13, 2020 16:00:00')
+  var x = chart.axisX[0].convertValueToPixel(b);
+  console.log(x)
+  var y = chart.axisY2[0].convertValueToPixel(1.18321);
+  //var w = Math.abs(x-chart.axisX[0].convertValueToPixel(new Date()));
+  //var h = Math.abs(y-chart.axisY2[0].convertValueToPixel(data.sl));
+  console.log(y)
+  ctx.strokeStyle = "#000"; //Change Line Color
+  ctx.lineWidth = 5; //Change Line Width/Thickness
+  //ctx.rect(x, y, w, h);
+  //ctx.stroke();
+}
+// var last60 = [];
+
+// function updatelast(){
+//   var d = new Date();
+//   var m = d.getUTCSeconds();
+//   if(m>last60.length){
+//     last60.append(price);
+//     var high = Math.max(...last60);
+//     var low = Math.min(...last60);
+//   } else {
+//     last60 = [];
+
+//   }
+//   var length = chart.options.charts[0].data[0].dataPoints.length;
+    
+//   chart.options.charts[0].data[0].dataPoints[length-1].y[0] = open;
+//   chart.options.charts[0].data[0].dataPoints[length-1].y[1] = high;
+//   chart.options.charts[0].data[0].dataPoints[length-1].y[2] = low;
+//   chart.options.charts[0].data[0].dataPoints[length-1].y[3] = close;
+//   chart.render();
+
+// }
+
+// var t=setInterval(updatelast,1000);
+//timeframe buttons
+document
+    .getElementById('m1')
+    .addEventListener('click', function () {
+      default_tf = 1;
+      $.get("eurusd_m1.csv", getDataPointsFromCSV);
+        
+    });
+
+    document
+    .getElementById('m5')
+    .addEventListener('click', function () {
+      default_tf = 5;
+      $.get("eurusd_h1.csv", getDataPointsFromCSV);
+        
+    });
+
+    document
+    .getElementById('m15')
+    .addEventListener('click', function () {
+      default_tf = 15;
+      $.get("eurusd_m1.csv", getDataPointsFromCSV);
+        
+    });
+
+    document
+    .getElementById('1h')
+    .addEventListener('click', function () {
+      default_tf = 60;
+      $.get("eurusd_h1.csv", getDataPointsFromCSV);
+        
+    });
+
+    document
+    .getElementById('4h')
+    .addEventListener('click', function () {
+      default_tf = 240;
+      $.get("eurusd_m1.csv", getDataPointsFromCSV);
+        
+    });
+
+    document
+    .getElementById('1d')
+    .addEventListener('click', function () {
+      default_tf = 1440;
+      $.get("eurusd_h1.csv", getDataPointsFromCSV);
+        
+    });
+    document
+    .getElementById('1w')
+    .addEventListener('click', function () {
+      default_tf = 10080;
+      $.get("eurusd_m1.csv", getDataPointsFromCSV);
+        
+    });
+
+    document
+    .getElementById('1m')
+    .addEventListener('click', function () {
+      default_tf = 9;
+      $.get("eurusd_h1.csv", getDataPointsFromCSV);
+        
+    });
+
+    var charte = new CanvasJS.Chart("chartContainer",
+    {
+    width: screen.width,
+  	height: screen.height * .4,
+    	
+    toolTip:{
+        enabled: false
+      },
+    axisX:{
+    	crosshair: {
+        enabled: true,
+        snapToDataPoint: true,
+        labelFormatter: function (e) {
+				return CanvasJS.formatDate(e.value);
+		},
+        hidden: function(e) {          
+        	return document.getElementById("e").innerText = "$12,345";
+        }
+      },
+       gridThickness: 0,
+       lineThickness: 0,
+       tickThickness: 0,
+       labelFormatter: function(e){
+				return  "" ;
+			}
+      },
+      axisY:{
+      crosshair: {
+        enabled: true,
+        snapToDataPoint: true,
+        thickness: 0,
+        labelFormatter: function (e) {
+				return "";
+		},
+        updated: function(e) {
+        	animateValue("e",s,e.value,600);
+        	s = e.value;
+        }
+      },
+       gridThickness: 0,
+       lineThickness: 0,
+       tickThickness: 0,
+       labelFormatter: function(e){
+				return  "" ;
+			}
+      },
+       data: [
+      {
+        type: "line",
+        connectNullData:true,
+        nullDataLineDashType:  "solid",
+        markerType: "none",
+        dataPoints: [
+        { x: new Date(2012, 00, 1), y: 450 },
+        { x: new Date(2012, 01, 1), y: 414 },
+        { x: new Date(2012, 02, 1), y: 520 },
+        { x: new Date(2012, 03, 1), y: 460 },
+        { x: new Date(2012, 04, 1), y: 450 },
+        { x: new Date(2012, 05, 1), y: 500 },
+        { x: new Date(2012, 06, 1), y: 480 },
+        { x: new Date(2012, 07, 1), y: 480 },
+        { x: new Date(2012, 08, 1), y: 410 },
+        { x: new Date(2012, 09, 1), y: 500 },
+        { x: new Date(2012, 10, 1), y: 480 },
+        { x: new Date(2012, 11, 1), y: 510 }
+        ]
+      }
+      ]
+    });
+
+    function changeEcolor(){
+    var length = charte.options.data[0].dataPoints.length;
+	if(charte.options.data[0].dataPoints[length-1].y > charte.options.data[0].dataPoints[0].y) {
+
+		charte.options.data[0].color = 'green';
+	} else if(charte.options.data[0].dataPoints[length-1].y < charte.options.data[0].dataPoints[0].y){
+		charte.options.data[0].color = 'red';
+	} else if(charte.options.data[0].dataPoints[length-1].y == charte.options.data[0].dataPoints[0].y){
+		charte.options.data[0].color = 'green';
+  }
+}
+
+function changeXcolor(){
+    var length = chartx.options.data[0].dataPoints.length;
+	if(chartx.options.data[0].dataPoints[length-1].y > chartx.options.data[0].dataPoints[0].y) {
+
+		chartx.options.data[0].color = 'green';
+	} else if(chartx.options.data[0].dataPoints[length-1].y < chartx.options.data[0].dataPoints[0].y){
+		chartx.options.data[0].color = 'red';
+	} else if(chartx.options.data[0].dataPoints[length-1].y == chartx.options.data[0].dataPoints[0].y){
+		chartx.options.data[0].color = 'green';
+  }
+}
+
+console.log(chart.options.data[0].dataPoints)
+changeEcolor();
+
+
+    charte.render();
+
+    console.log(charte.options.data[0].dataPoints);
+
+    document
+    .getElementById('eqd1')
+    .addEventListener('click', function () {
+      console.log(eqd1)
+      
+      chartx.options.data[0].dataPoints = eqd1;
+      changeEcolor();
+      chartx.render();
+      
+        
+    });
+    document
+    .getElementById('eqw1')
+    .addEventListener('click', function () {
+      console.log(eqw1)
+      chartx.options.data[0].dataPoints = eqw1;
+      changeEcolor();
+      chartx.render();
+      
+        
+    });
+    document
+    .getElementById('eq3m')
+    .addEventListener('click', function () {
+      console.log(eqm3)
+      chartx.options.data[0].dataPoints = eqm3;
+      chartx.render();
+      
+        
+    });
+    document
+    .getElementById('eq1y')
+    .addEventListener('click', function () {
+      console.log(eqy1)
+      chartx.options.data[0].dataPoints = eqy1;
+      changeEcolor();
+      chartx.render();
+      
+        
+    });
+    document
+    .getElementById('eq5y')
+    .addEventListener('click', function () {
+      console.log(eqy5)
+      chartx.options.data[0].dataPoints = eqy5;
+      console.log(charte.options.data[0].dataPoints.length)
+      changeEcolor();
+      chartx.render();
+      
+        
+    });
+    document
+    .getElementById('eqall')
+    .addEventListener('click', function () {
+      console.log(eqall)
+      chartx.options.data[0].dataPoints = eqall;
+      changeEcolor();
+      chartx.render();
+      
+        
+    });
+
+    //charte buttons
+    document
+    .getElementById('eqd1')
+    .addEventListener('click', function () {
+      console.log(eqd1)
+      
+      charte.options.data[0].dataPoints = eqd1;
+      changeEcolor();
+      charte.render();
+      
+        
+    });
+    document
+    .getElementById('eqw1')
+    .addEventListener('click', function () {
+      console.log(eqw1)
+      charte.options.data[0].dataPoints = eqw1;
+      changeEcolor();
+      charte.render();
+      
+        
+    });
+    document
+    .getElementById('eq3m')
+    .addEventListener('click', function () {
+      console.log(eqm3)
+      charte.options.data[0].dataPoints = eqm3;
+      charte.render();
+      
+        
+    });
+    document
+    .getElementById('eq1y')
+    .addEventListener('click', function () {
+      console.log(eqy1)
+      charte.options.data[0].dataPoints = eqy1;
+      changeEcolor();
+      charte.render();
+      
+        
+    });
+    document
+    .getElementById('eq5y')
+    .addEventListener('click', function () {
+      console.log(eqy5)
+      charte.options.data[0].dataPoints = eqy5;
+      console.log(charte.options.data[0].dataPoints.length)
+      changeEcolor();
+      charte.render();
+      
+        
+    });
+    document
+    .getElementById('eqall')
+    .addEventListener('click', function () {
+      console.log(eqall)
+      charte.options.data[0].dataPoints = eqall;
+      changeEcolor();
+      charte.render();
+      
+        
+    });
+
+    var chartx = new CanvasJS.Chart("chartContainer2",
+    {
+    width: screen.width,
+  	height: screen.height * .4,
+    toolTip:{
+        enabled: false
+      },
+    axisX:{
+    	crosshair: {
+        enabled: true,
+        snapToDataPoint: true,
+        labelFormatter: function (e) {
+				return CanvasJS.formatDate(e.value);
+		},
+        hidden: function(e) {          
+        	return document.getElementById("e").innerText = "$12,345";
+        }
+      },
+       gridThickness: 0,
+       lineThickness: 0,
+       tickThickness: 0,
+       labelFormatter: function(e){
+				return  "" ;
+			}
+      },
+      axisY:{
+      crosshair: {
+        enabled: true,
+        snapToDataPoint: true,
+        thickness: 0,
+        labelFormatter: function (e) {
+				return "";
+		},
+        updated: function(e) {
+        	animateValue("e",s,e.value,600);
+        	s = e.value;
+        }
+      },
+       gridThickness: 0,
+       lineThickness: 0,
+       tickThickness: 0,
+       labelFormatter: function(e){
+				return  "" ;
+			}
+      },
+       data: [
+      {
+        type: "line",
+        connectNullData:true,
+        nullDataLineDashType:  "solid",
+        markerType: "none",
+        dataPoints: [
+        { x: new Date(2012, 00, 1), y: 450 },
+        { x: new Date(2012, 01, 1), y: 414 },
+        { x: new Date(2012, 02, 1), y: 520 },
+        { x: new Date(2012, 03, 1), y: 460 },
+        { x: new Date(2012, 04, 1), y: 450 },
+        { x: new Date(2012, 05, 1), y: 500 },
+        { x: new Date(2012, 06, 1), y: 480 },
+        { x: new Date(2012, 07, 1), y: 480 },
+        { x: new Date(2012, 08, 1), y: 410 },
+        { x: new Date(2012, 09, 1), y: 500 },
+        { x: new Date(2012, 10, 1), y: 480 },
+        { x: new Date(2012, 11, 1), y: 510 }
+        ]
+      }
+      ]
+    });
+
+    changeXcolor();
+
+	dataPoints5min = [];
+	function convertminto5min() {
+		var temp = 0;
+		for(var i=0;i<lengthx;i++){
+			if(chartx.options.data[0].dataPoints[i].x.getMinutes() % 5 == 0){
+				dataPoints5min.push({
+					x: chartx.options.data[0].dataPoints[i].x,
+					y: chartx.options.data[0].dataPoints[i].y
+				})
+			}
+		}
+	}
+
+	dataPoints10min = [];
+	function convertminto10min() {
+		var temp = 0;
+		for(var i=0;i<lengthx;i++){
+			if(chartx.options.data[0].dataPoints[i].x.getMinutes() % 10 == 0){
+				dataPoints10min.push({
+					x: chartx.options.data[0].dataPoints[i].x,
+					y: chartx.options.data[0].dataPoints[i].y
+				})
+			}
+		}
+	}
+
+	dataPoints1hour = [];
+	function convert10minto1hour() {
+		var temp = 0;
+		for(var i=0;i<lengthx;i++){
+			if(chartx.options.data[0].dataPoints[i].x.getMinutes() == 0){
+				dataPoints1hour.push({
+					x: chartx.options.data[0].dataPoints[i].x,
+					y: chartx.options.data[0].dataPoints[i].y
+				})
+			}
+		}
+	}
+
+	dataPoints1day = [];
+	function convert1hourto1day() {
+		var temp = 0;
+		for(var i=0;i<lengthx;i++){
+			if(chartx.options.data[0].dataPoints[i].x.getHours() == 0){
+				dataPoints1day.push({
+					x: chartx.options.data[0].dataPoints[i].x.setDate(chartx.options.data[0].dataPoints[i].x.getDate() - 1),
+					y: chartx.options.data[0].dataPoints[i].y
+				})
+			}
+		}
+	}
+
+
+    chartx.render();
+    
+  }
+  </script>
+  <script type="text/javascript">
+  	function createTradeHistory(){
+
+  		var card = document.createElement('div');
+  		var cardheader = document.createElement('div');
+  		var collapse = document.createElement('div');
+  		var d1 = document.createElement('div');
+
+  		var d2 = document.createElement('div');
+  		var pair = document.createElement('div'); //pair
+  		var price = document.createElement('div');//open -> close
+
+  		var d3 = document.createElement('div');
+  		var timeopen = document.createElement('div'); //trade open time
+
+
+  		var d4 = document.createElement('div');
+  		var pl = document.createElement('div');//profit/loss
+
+  		var collapseable= document.createElement('div');
+  		var cardbody = document.createElement('div');
+
+  		var timeclose = document.createElement('div'); //trade close time
+
+  		var d5 = document.createElement('div');
+  		var sl = document.createElement('div');
+  		var slnumber = document.createElement('div');
+  		var swap = document.createElement('div');
+  		var swapnumber = document.createElement('div');
+
+  		var d6 = document.createElement('div');
+  		var tp = document.createElement('div');
+  		var tpnumber = document.createElement('div');
+  		var commision = document.createElement('div');
+  		var commisionnumber = document.createElement('div');
+
+
+  // 		<div class="card">
+  //   <div class="card-header" id="headingOne">
+      
+  //       <div data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+  //       <div class="d-flex flex-row justify-content-between">
+  //       <div class="d-flex flex-column">
+  //       	<div>
+  //         <strong>EURUSD</strong>, <span class="text-primary">buy 0.04</span>
+  //         </div>
+  //         <div>1.21121 -> 1.23123</div>
+  //         </div>
+  //         <div class="d-flex flex-column">
+  //         <div>
+  //         <small>
+  //         11-24-2020 11:20:45
+  //         </small>
+  //         </div>
+  //         <div class="d-flex justify-content-end">
+  //         <span class="text-primary">
+  //         7.24
+  //         </span>
+  //         </div>
+  //         </div>
+  //         </div>
+  //       </div>
+      
+  //   </div>
+
+  //   <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+  //     <div class="card-body d-flex flex-column">
+  //       <div>2020.11.29 11:23:56</div>
+        
+  //       <div class="d-flex flex-row justify-content-between">
+        	
+  //           <div>
+  //           S/L:
+  //           </div>
+  //           <div>
+  //           -
+  //           </div>
+            
+  //           <div>Swap:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  //           <div>
+  //           -
+  //           </div>
+  //       </div>
+  //       <div class="d-flex flex-row justify-content-between">
+  //       	<div>T/P:</div>
+  //           <div>
+  //           -
+  //           </div>
+  //           <div>Commisions:</div>
+  //           <div>
+  //           -
+  //           </div>
+  //       </div>
+        
+        
+  //     </div>
+  //   </div>
+  // </div>
+  	}
+  </script>
+  <script>
+  var s = 500;
+  function animateValue(id, start, end, duration) {
+    // assumes integer values for start and end
+    
+    var obj = document.getElementById(id);
+    var range = end - start;
+    // no timer shorter than 50ms (not really visible any way)
+    var minTimer = 50;
+    // calc step time to show all interediate values
+    var stepTime = Math.abs(Math.floor(duration / range));
+    
+    // never go below minTimer
+    stepTime = Math.max(stepTime, minTimer);
+    
+    // get current time and calculate desired end time
+    var startTime = new Date().getTime();
+    var endTime = startTime + duration;
+    var timer;
+  
+    function run() {
+        var now = new Date().getTime();
+        var remaining = Math.max((endTime - now) / duration, 0);
+        var value = Math.round(end - (remaining * range));
+        obj.innerHTML = value;
+        if (value == end) {
+            clearInterval(timer);
+        }
+    }
+    
+    timer = setInterval(run, stepTime);
+    run();
+}
+  </script>
+  <script>
+
+function scrollFunction(){
+
+var head = document.getElementById("h");
+var l = document.getElementById("l");
+	if(l.scrollTop != 0) {
+		head.classList.add('text-center');
+    	var currentFont = head.style.fontSize.replace("px", "");
+    	head.style.fontSize = parseInt(16) + "px";
+    } else if(l.scrollTop == 0){
+    	head.classList.remove('text-center');
+    	var currentFont = head.style.fontSize.replace("px", "");
+    	head.style.fontSize = parseInt(30) + "px";
+    }
+
+}
+
+
+</script>
+</body>
+</html>
