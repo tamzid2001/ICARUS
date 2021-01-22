@@ -1,0 +1,352 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
+<script src="js/mobiscroll.javascript.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+
+.thumbnail {
+    position: relative;
+}
+
+.caption {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+}
+.custom-card-deck {
+    height: 100%;
+}
+
+.custom-card-deck .mbsc-lv-sl-c {
+    max-width: 100%;
+    
+}
+
+.custom-card-deck .mbsc-lv-v {
+    padding-top: 100%;
+    
+}
+
+.custom-card-deck .mbsc-lv-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.custom-card-deck .mbsc-lv-item.mbsc-lv-item-swiping {
+    z-index: 10;
+}
+
+.custom-card-deck .mbsc-card.custom-card {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+</style>
+    </head>
+
+    <body>
+        <div class="custom-card-deck">
+        <ul id="card-deck-cycle" class="mbsc-card-list mbsc-cloak">
+            <li>
+                <div class="custom-card custom-card-rotate-right" mbsc-card>
+                    <div class="mbsc-card-content">
+                        <div class="thumbnail text-center">
+                        <img draggable="false" src="https://img.mobiscroll.com/demos/card_1.png">
+                        <div class="caption">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, quisquam?</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                    <button mbsc-button class="mbsc-btn-flat sbutton" data-icon="material-share"></button>
+                    <input mbsc-rating type="rating" data-role="none" data-empty="heart2" data-filled="heart" value="1" min='-1' max="1" />
+                    </div>
+                </div>
+            </li>
+        
+            <li>
+                <div class="custom-card custom-card-rotate-left" mbsc-card>
+                    <div class="mbsc-card-header">
+                        <div class="mbsc-card-title">Best animal adventure</div>
+                        <div class="mbsc-card-subtitle">A young panda tests his climbing skills at the Chengdu Research Base.</div>
+                    </div>
+                    <div class="mbsc-card-content">
+                        <img draggable="false" src="https://img.mobiscroll.com/demos/card_2.png">
+                    </div>
+                </div>
+            </li>
+        
+            <li>
+                <div class="custom-card" mbsc-card>
+                    <div class="mbsc-card-header">
+                        <div class="mbsc-card-title">Best places to test your survival skills</div>
+                        <div class="mbsc-card-subtitle">A view across the Turnagain Arm on Alaska's Kenai Peninsula.</div>
+                    </div>
+                    <div class="mbsc-card-content">
+                        <img draggable="false" src="https://img.mobiscroll.com/demos/card_3.png">
+                    </div>
+                </div>
+            </li>
+        
+            <li>
+                <div class="custom-card custom-card-rotate-right" mbsc-card>
+                    <div class="mbsc-card-header">
+                        <div class="mbsc-card-title">Most accessible destinations</div>
+                        <div class="mbsc-card-subtitle">The impressive Mayan site of Chichén Itzá.</div>
+                    </div>
+                    <div class="mbsc-card-content">
+                        <img draggable="false" src="https://img.mobiscroll.com/demos/card_4.png">
+                    </div>
+                </div>
+            </li>
+        
+            <li>
+                <div class="custom-card custom-card-rotate-left" mbsc-card>
+                    <div class="mbsc-card-header">
+                        <div class="mbsc-card-title">The world’s most extraordinary sleepovers</div>
+                        <div class="mbsc-card-subtitle">Explore the azure depths with a stay at the Manta Resort's underwater room.</div>
+                    </div>
+                    <div class="mbsc-card-content">
+                        <img draggable="false" src="https://img.mobiscroll.com/demos/card_5.png">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        </div>
+        <div class="mbsc-form-group fixed-bottom d-flex justify-content-between">
+            <div class="mbsc-btn-group">
+                <button id="showGrid" mbsc-button data-icon="material-texture" data-toggle="modal" data-target="#cate"></button>
+                <button mbsc-button data-icon="line-t-shirt" data-toggle="modal" data-target="#shop"></button>
+                <button mbsc-button data-icon="pencil" data-toggle="modal" data-target="#edit"></button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+<div class="modal fade" id="cate" tabindex="-1" role="dialog" aria-labelledby="cate" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Categories</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="cat" class="modal-body">
+            <!--CATEGORIES-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Themes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="allthemes" class="modal-body">
+            <!--CATEGORIES-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="shop" tabindex="-1" role="dialog" aria-labelledby="cat" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Shop</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="sopshop" class="modal-body">
+            <!--CATEGORIES-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+        
+        <script>
+
+function getQuotes(c){
+    const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": `https://famous-quotes4.p.rapidapi.com/random?category=${c}&count=100`,
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "LbRADYwiNGmshUlm2lx7GWMselcap19tyJGjsnN2KKSW2GmxDu",
+		"x-rapidapi-host": "famous-quotes4.p.rapidapi.com"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+    for(var i = 0; i < response.length; i++)
+	createCard(response[i]['text'])
+});
+
+}
+
+    mobiscroll.settings = {
+    theme: 'ios',
+    themeVariant: 'light'
+};
+mobiscroll.listview('#card-deck-cycle', {
+    stages: [{
+        percent: -20,
+        action: function (event, inst) {
+            inst.move(event.target, 0);
+            return false;
+        }
+    }, {
+        percent: 20,
+        action: function (event, inst) {
+            inst.move(event.target, 0);
+            return false;
+        }
+    }],
+    actionable: false
+});
+        </script>
+
+        <script>
+            var fonts = ['Arial', 'Times New Roman', 'Verdana', 'Helvetica', 'Tahoma', 'Trebuchet MS', 'Georgia', 'Garamond', 'Courier New', 'Brush Script MT']
+            for(var i = 0;i < fonts.length;i++){
+                createThemes(fonts[i])
+            }
+            function createThemes(f) {
+                var card = document.createElement('div')
+                card.setAttribute('class', 'card themeclass')
+                card.setAttribute('data-font', f)
+                var cardbody = document.createElement('div')
+                cardbody.setAttribute('class','card-body')
+                var title = document.createElement('h5')
+                title.setAttribute('class','card-title')
+                title.setAttribute('style', `font-family: ${f}`)
+                title.appendChild(document.createTextNode('Abcd'))
+                card.appendChild(cardbody)
+                cardbody.appendChild(title)
+                document.getElementById('allthemes').appendChild(card)
+
+            }
+            function createCard(quote) {
+                var listitem = document.createElement('li')
+                var card = document.createElement('div')
+                card.setAttribute('class', 'custom-card custom-card-rotate-right')
+                card.setAttribute('mbsc-card', '')
+                var cardcontent = document.createElement('div')
+                cardcontent.setAttribute('class', 'mbsc-card-content')
+                var dimg = document.createElement('div')
+                dimg.setAttribute('class','thumbnail text-center')
+                var img = document.createElement('img')
+                img.setAttribute('draggable', 'false')
+                img.setAttribute('src','splash.png')
+                var dtext = document.createElement('div')
+                dtext.setAttribute('class', 'caption')
+                var text = document.createElement('p')
+                text.appendChild(document.createTextNode(quote))
+                var author = document.createElement('p')
+                author.appendChild(document.createTextNode(author))
+                var dbuttons = document.createElement('div')
+                dbuttons.setAttribute('class', 'd-flex flex-row justify-content-center')
+                var sharebutton = document.createElement('button')
+                sharebutton.setAttribute('mbsc-button', '')
+                sharebutton.setAttribute('class', 'mbsc-btn-flat sbutton')
+                sharebutton.setAttribute('data-icon', 'material-share')
+                var likebutton = document.createElement('button')
+                likebutton.setAttribute('mbsc-button', '')
+                likebutton.setAttribute('class', 'mbsc-btn-flat lbutton')
+                likebutton.setAttribute('data-icon', 'heart2')
+                listitem.appendChild(card)
+                card.appendChild(cardcontent)
+                cardcontent.appendChild(dimg)
+                dimg.appendChild(img)
+                dimg.appendChild(dtext)
+                dtext.appendChild(text)
+                card.appendChild(dbuttons)
+                dbuttons.appendChild(sharebutton)
+                dbuttons.appendChild(likebutton)
+                document.getElementById('card-deck-cycle').appendChild(listitem)
+            }
+
+            function createCategory(category) {
+                var card = document.createElement('div')
+                card.setAttribute('class', 'card categoryclass')
+                card.setAttribute('data-category', category)
+                var cardbody = document.createElement('div')
+                cardbody.setAttribute('class','card-body')
+                var title = document.createElement('h5')
+                title.setAttribute('class','card-title')
+                title.appendChild(document.createTextNode(category))
+                card.appendChild(cardbody)
+                cardbody.appendChild(title)
+                document.getElementById('cat').appendChild(card)
+            }
+
+            var c = ["age","alone","amazing","anger","anniversary","architecture","art","attitude","beauty","best","birthday","business","car","change","communication","computers","cool","courage","dad","dating","death","design","diet","dreams","education","environmental","equality","experience","failure","faith","family","famous","fear","finance","fitness","food","forgiveness","freedom","friendship","funny","future","gardening","god","good","government","graduation","great","happiness","health","history","home","hope","humor","imagination","inspirational","intelligence","jealousy","knowledge","leadership","learning","legal","life","love","marriage","medical","men","mom","money","morning","motivational","movies","movingon","music","nature","parenting","patience","patriotism","peace","pet","poetry","politics","positive","power","relationship","religion","respect","romantic","sad","science","smile","society","sports","strength","success","sympathy","teacher","technology","teen","thankful","time","travel","trust","truth","war","wedding","wisdom","women","work","christmas","easter","fathersday","memorialday","mothersday","newyears","saintpatricksday","thanksgiving","valentinesday"];
+    for (var i = 0; i < c.length; i++) {
+        createCategory(c[i]);
+    }
+
+            var elements = document.getElementsByClassName("categoryclass");
+            var myFunction = function() {
+                var attribute = this.getAttribute("data-category");
+                getQuotes(attribute);
+                mobiscroll.listview('#card-deck-cycle', {
+    stages: [{
+        percent: -20,
+        action: function (event, inst) {
+            inst.move(event.target, 0);
+            return false;
+        }
+    }, {
+        percent: 20,
+        action: function (event, inst) {
+            inst.move(event.target, 0);
+            return false;
+        }
+    }],
+    actionable: false
+});
+            };
+
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].addEventListener('click', myFunction, false);
+            }
+
+            $(document).ready(function(){
+  $('lbutton').click(function(){
+    $(this).fadeOut(0);
+    $(this).removeAttr('data-icon');
+    $(this).attr('data-icon', 'heart');
+    $(this).fadeIn(0);
+     // Show the requested part
+    // You can do all of this using addClass / removeClass and use CSS transition (smoother, cleaner);
+  return false;  
+});
+});
+
+            var like = document.getElementsByClassName('lbutton')
+
+            var myFunction2 = function() {
+                var attribute = this.setAttribute("data-icon", "heart");
+            
+            };
+
+            for (var i = 0; i < like.length; i++) {
+                like[i].addEventListener('click', myFunction2, false);
+            }
+        </script>
+    </body>
+</html>

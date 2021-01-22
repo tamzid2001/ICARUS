@@ -1,0 +1,343 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Profitable Stocks and Options Signals">
+    <meta name="author" content="GuruGains">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    
+    <title>GuruGains</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
+    
+    <!-- Bootstrap core CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="script.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="gurugains.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-image: url('gglogo.svg'); background-repeat:no-repeat;
+    background-position:50% 50%; background-color: rgb(51, 204, 255); color: black;">
+      <div class="col-md-5 p-lg-5 mx-auto my-5" style="background: rgb(255, 255, 255, 0.7); border-radius: 20px;">
+        <h5 class="display-4 font-weight-normal">Wisdom is worth more than gold.</h5>
+        <p class="lead font-weight-normal">Or so they say...</p>
+        <p class="lead font-weight-normal">Get Profitable Stocks & Option Signals on Telegram!</p>
+        <p class="lead font-weight-normal">Sign Up Today And Get a 2 Week Free trial. Cancel Anytime!</p>
+        <a class="btn h" href="#subscribe">Become a Member Now!</a>
+      </div>
+      <!--<div class="product-device box-shadow d-none d-md-block"></div>
+      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>-->
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">Meet GuruGainsBot!</h2>
+          <p class="lead">Get real-time Telegram notifications.</p>
+        </div>
+        <div class="bg-light box-shadow mx-auto pb-2" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+          <div class='text-center d-flex flex-column pt-n3'>
+            <h1 id="time" style="color: black;">9:36</h1>
+            <div class="text-center"><p id="date" style="color: black;">Monday, January 18</p></div>
+          </div>
+          <div class="m-auto pl-5 pt-0 pb-2">
+            <div>
+              <label class="switch">
+                  <input type="checkbox" id="lockscreen" checked>
+                  <span>
+                      <em></em>
+                      <strong></strong>
+                  </span>
+              </label>
+              
+          </div>
+          
+          </div>
+            <div class="d-flex flex-row">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="30" height="30"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><defs><linearGradient x1="25.1894" y1="25.1894" x2="146.8106" y2="146.8106" gradientUnits="userSpaceOnUse" id="color-1_oWiuH0jFiU0R_gr1"><stop offset="0" stop-color="#33bef0"></stop><stop offset="1" stop-color="#0a85d9"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><path d="M86,172c-47.49649,0 -86,-38.50351 -86,-86v0c0,-47.49649 38.50351,-86 86,-86v0c47.49649,0 86,38.50351 86,86v0c0,47.49649 -38.50351,86 -86,86z" fill="#cccccc"></path><g><path d="M172,86c0,47.4935 -38.5065,86 -86,86c-47.4935,0 -86,-38.5065 -86,-86c0,-47.4935 38.5065,-86 86,-86c47.4935,0 86,38.5065 86,86z" fill="url(#color-1_oWiuH0jFiU0R_gr1)"></path><path d="M26.3117,83.7038c35.0665,-15.8885 76.2519,-33.1272 82.5944,-35.6212c13.9836,-5.4997 20.081,0.1204 19.1264,9.0859c-1.1739,10.9865 -6.7381,42.957 -10.1609,65.8631c-2.0038,13.4031 -9.2622,17.5096 -17.4537,12.3109c-6.2135,-3.9431 -27.5759,-17.931 -33.196,-22.7126c-3.8313,-3.2594 -6.5016,-6.9144 -3.784,-10.6382c0.7955,-1.0879 2.8294,-3.2809 3.9603,-4.3731c5.6717,-5.4954 4.9063,-6.6779 -1.9522,-1.7716c-0.817,0.5848 -5.5556,4.0205 -7.5035,5.3191c-4.773,3.182 -9.1633,3.354 -16.6066,0.8256c-6.0888,-2.0683 -11.9368,-3.6636 -15.6262,-5.2589c-5.0955,-2.2059 -7.0477,-9.5632 0.602,-13.029z" fill="#000000" opacity="0.05"></path><path d="M29.3948,84.2413c32.5596,-14.5555 72.6012,-31.2352 78.4578,-33.5959c14.0352,-5.6674 19.1995,-2.3048 17.6902,8.6473c-1.4018,10.1394 -6.3769,41.5122 -9.8642,62.5435c-2.0554,12.3797 -8.0582,15.1059 -15.8756,10.0491c-4.8977,-3.1562 -24.6089,-16.1422 -29.3905,-19.9219c-3.698,-2.9197 -7.5293,-6.2909 -3.053,-11.1714c1.4964,-1.6297 9.761,-9.6062 15.9401,-15.5402c3.5819,-3.4443 2.3048,-5.1428 -2.0167,-2.1844c-7.9249,5.4309 -20.8894,14.0266 -23.2028,15.5875c-4.4075,2.967 -8.5484,3.6808 -15.7552,1.4147c-5.6803,-1.7888 -11.1671,-3.5217 -14.0266,-4.6354c-6.3898,-2.4768 -6.4758,-7.8088 1.0965,-11.1929z" fill="#000000" opacity="0.07"></path><path d="M32.4779,84.7831c30.057,-13.2225 68.9505,-29.3432 74.3212,-31.5749c14.0825,-5.8394 18.404,-4.7214 16.2497,8.213c-1.548,9.2966 -6.0114,40.0717 -9.5718,59.2282c-2.1113,11.3606 -6.8499,12.7065 -14.2975,7.7916c-3.5819,-2.365 -21.6634,-14.3233 -25.5893,-17.1312c-3.5819,-2.5585 -8.5226,-5.6373 -2.3263,-11.7003c2.2059,-2.1586 16.6582,-15.9616 27.9199,-26.703c1.4749,-1.4104 -0.3784,-3.7281 -2.0812,-2.5972c-15.179,10.0663 -36.2232,24.037 -38.9021,25.8559c-4.0463,2.7477 -7.9335,4.0076 -14.9081,2.0038c-5.2718,-1.5136 -10.4189,-3.3196 -12.4227,-4.0076c-7.7185,-2.6488 -5.8867,-6.0802 1.6082,-9.3783z" fill="#ffffff"></path></g></g></svg>
+          <div class="bg-dark box-shadow m-auto" id="grow" style="width: 85%; height: 65px; border-radius: 10px 10px 10px 10px;">
+            <div class="d-flex flex-column justify-content-start measuringWrapper">
+            <p id="t1" class="pl-2 pt-2 text-left"><span style="color: blue"><strong>GuruGains</strong></span></br>Profitable stock / options signal</p>
+            </div>
+            </div>
+            </div>
+            <span class=""></br></span>
+            
+        </div>
+      </div>
+
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Consistent Track Record!</h2>
+          <p class="lead">Our most recent stocks and options calls.</p>
+        </div>
+        <div class="bg-dark box-shadow mx-auto" style="overflow-y: scroll; width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+          <div class="sticky-top bg-dark" style="border-radius: 21px 21px 0 0;">
+            <h5 class="text-center pb-2 pt-1" style="color: white">GuruGainsBot</h5>
+          </div>
+            
+          <div class="bg-light box-shadow m-auto" style="width: 90%; height: 100px; border-radius: 10px 10px 10px 10px;">
+            <div class="d-flex flex-column justify-content-start">
+            <p class="pl-2 pt-2 text-left"><span style="color: blue"><strong>GuruGains</strong></span></br>hello</br>hello</p>
+            </div>
+            </div>
+            <span class=""></br></span>
+            <div class="bg-light box-shadow m-auto" style="width: 90%; height: 100px; border-radius: 10px 10px 10px 10px;">
+              <div class="d-flex flex-column justify-content-start">
+              <p class="pl-2 pt-2 text-left">GuruGains</br>hello</br>hello</p>
+              </div>
+            </div>
+            <span class=""></br></span>
+            <div class="bg-light box-shadow m-auto" style="width: 90%; height: 100px; border-radius: 10px 10px 10px 10px;">
+              <div class="d-flex flex-column justify-content-start">
+              <p class="pl-2 pt-2 text-left"><span style="color: blue"><strong>GuruGains</strong></span></br>hello</br>hello</p>
+              </div>
+            </div>
+            <span class=""></br></span>
+            <div class="bg-light box-shadow m-auto" style="width: 90%; height: 100px; border-radius: 10px 10px 10px 10px;">
+              <div class="d-flex flex-column justify-content-start">
+              <p class="pl-2 pt-2 text-left">GuruGains</br>hello</br>hello</p>
+              </div>
+            </div>
+            <span class=""></br></span>
+            <div class="bg-light box-shadow m-auto" style="width: 90%; height: 100px; border-radius: 10px 10px 10px 10px;">
+              <div class="d-flex flex-column justify-content-start">
+              <p class="pl-2 pt-2 text-left"><span style="color: blue"><strong>GuruGains</strong></span></br>hello</br>hello</p>
+              </div>
+            </div>
+
+            <span class=""></br></span>
+            <span class=""></br></span>
+            
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Manage Your Account</h2>
+          <p class="lead">Not for you? Cancel Anytime.</p>
+        </div>
+        <div class="bg-dark box-shadow mx-auto" style="overflow-y: scroll; width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+          <div class="sticky-top bg-dark" style="border-radius: 21px 21px 0 0;">
+            <h5 class="text-center pb-2 pt-1" style="color: white">GuruGainsBot</h5>
+          </div>
+            
+          <div class="bg-light box-shadow m-auto" style="width: 90%; height: 120px; border-radius: 10px 10px 10px 10px;">
+            <div class="d-flex flex-column justify-content-start">
+            <p class="pl-2 pt-2 text-left"><span style="color: blue"><strong>GuruGains</strong></span></br>Your commands:</br>/status - get subscription details</br>/cancel - cancel your subscription</p>
+            </div>
+            </div>
+            <span class=""></br></span>
+            <div class="d-flex justify-content-end pr-4">
+            <div class="bg-light box-shadow" style="width: 30%; height: 60px; border-radius: 10px 10px 10px 10px;">
+              <div class="d-flex flex-column justify-content-start">
+              <p class="pr-2 pt-2 text-right">You</br>/cancel</p>
+              </div>
+            </div>
+        </div>
+            <span class=""></br></span>
+            <div class="bg-light box-shadow m-auto" style="width: 90%; height: 60px; border-radius: 10px 10px 10px 10px;">
+              <div class="d-flex flex-column justify-content-start">
+              <p class="pl-2 pt-2 text-left"><span style="color: blue"><strong>GuruGains</strong></span></br>Are you sure? (Yes / No)</p>
+              </div>
+            </div>
+            <span class=""></br></span>
+            <div class="d-flex justify-content-end pr-4">
+            <div class="bg-light box-shadow" style="width: 30%; height: 60px; border-radius: 10px 10px 10px 10px;">
+              <div class="d-flex flex-column justify-content-start">
+              <p class="pr-2 pt-2 text-right">You</br>Yes</p>
+              </div>
+            </div>
+        </div>
+            <span class=""></br></span>
+            <span class=""></br></span>
+            
+        </div>
+      </div>
+      
+      <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">Want some market wisdom?</h2>
+          <p class="lead">Follow us on Twitter and Facebook!</p>
+        </div>
+        <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+          <span class=""></br></span>
+            <div class="bg-primary box-shadow m-auto" style="width: 90%; height: 100px; border-radius: 10px 10px 10px 10px;">
+              <div class="d-flex flex-column justify-content-start">
+              <p class="pl-2 pt-2 text-left"><span style="color: white"><strong>GuruGains</strong></span></br>Take risks and be patient</br>We are here to balance your fear and greed</p>
+              </div>
+            </div>
+            <span class=""></br></span>
+            <span class=""></br></span>
+            <span class=""></br></span>
+            <span class=""></br></span>
+            
+          <div class="container">
+        
+            <div class="social-buttons m-auto">        
+            <!-- facebook  Button -->
+                    <a href="http://www.facebook.com" target="blank" class="m-auto pr-2"> 
+                      <div class="social-icon facebook">
+                        <i class="fa fa-facebook" aria-hidden="true"></i> 
+                      </div>
+                    </a>
+              <!-- TwitterButton -->
+                    <a href="http://twitter.com/" target="blank" class="m-auto">
+                      <div class="social-icon twitter">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </div> 
+                    </a>
+            </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="subscribe" class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Become a member!</h2>
+        <p class="lead">Join today and get a 2-week free trial!</p>
+      </div>
+      <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+        <div>
+          <h5 class="text-center pb-2 text-dark">GuruGainsBot</h5>
+        </div>
+        <div class="bg-dark box-shadow m-auto" style="width: 90%; height: 165px; border-radius: 10px 10px 10px 10px;">
+          <div class="d-flex flex-column justify-content-start">
+          <p class="pl-2 pt-2 text-left"><span style="color: blue"><strong>GuruGains</strong></span></br>Subscribe today to get profitable</br> stocks and options calls
+          </br>signals for $50/month after your free trial is over.</p>
+          </div>
+        </div>
+<span></br></span>
+        <div class="bg-dark box-shadow m-auto" style="width: 60%; height: 50px; border-radius: 40px;">
+          <div class="d-flex flex-column justify-content-start" id="subscribe-btn">
+            <p class="pl-2 pt-2 text-center">Become a member!</p>
+          </div>
+        </div>
+        <div id="error-message" class="text-center m-auto" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+    <footer class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+          <small class="d-block mb-3 text-muted">GuruGains © 2020-2021</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Features</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Trading Signals</a></li>
+            <li><a class="text-muted" href="#">Consistent Track Record</a></li>
+            <li><a class="text-muted" href="#">Cancel Anytime</a></li>
+            <li><a class="text-muted" href="#">Affiliate Program</a></li>
+            <li><a class="text-muted" href="#">2-Week Free Trial</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Privacy Policy</a></li>
+            <li><a class="text-muted" href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        var scroll = new SmoothScroll('a[href*="#subscribe"]', {
+
+// Selectors
+ignore: '[data-scroll-ignore]', // Selector for links to ignore (must be a valid CSS selector)
+header: null, // Selector for fixed headers (must be a valid CSS selector)
+topOnEmptyHash: true, // Scroll to the top of the page for links with href="#"
+
+// Speed & Duration
+speed: 500, // Integer. Amount of time in milliseconds it should take to scroll 1000px
+speedAsDuration: false, // If true, use speed as the total duration of the scroll animation
+durationMax: null, // Integer. The maximum amount of time the scroll animation should take
+durationMin: null, // Integer. The minimum amount of time the scroll animation should take
+clip: true, // If true, adjust scroll distance to prevent abrupt stops near the bottom of the page
+
+// Easing
+easing: 'easeInOutCubic', // Easing pattern to use
+
+// History
+updateURL: true, // Update the URL on scroll
+popstate: true, // Animate scrolling with the forward/backward browser buttons (requires updateURL to be true)
+
+// Custom Events
+emitEvents: true // Emit custom events
+
+});
+    </script>
+
+    <script>
+
+function growDiv() {
+  var growDiv = document.getElementById('grow');
+  growDiv.style.height = "65px"
+  //document.getElementById("more-button").value = document.getElementById("more-button").value == 'Read more' ? 'Read less' : 'Read more';
+}
+    $(document).ready(function(){
+        $('#lockscreen').click(function(){
+            if($(this).prop("checked") == true){
+                console.log("Checkbox is checked.");
+                var growDiv = document.getElementById('grow');
+                growDiv.style.height = "65px"
+                document.getElementById('t1').innerHTML = `<span style="color: blue"><strong>GuruGains</strong></span></br>Profitable stock / options signal`
+            }
+            else if($(this).prop("checked") == false){
+                console.log("Checkbox is unchecked.");
+                var growDiv = document.getElementById('grow');
+                growDiv.style.height = "100px"
+                document.getElementById('t1').innerHTML = `<span style="color: blue"><strong>GuruGains</strong></span></br>more info</br>more info</br> `
+            }
+        });
+    });
+
+    
+
+var tday=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var tmonth=["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+if(nhour==0){ap=" AM";nhour=12;}
+else if(nhour<12){ap=" AM";}
+else if(nhour==12){ap=" PM";}
+else if(nhour>12){ap=" PM";nhour-=12;}
+
+if(nmin<=9) nmin="0"+nmin;
+if(nsec<=9) nsec="0"+nsec;
+
+var clocktext=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
+document.getElementById('time').innerHTML=nhour+":"+nmin;
+document.getElementById('date').innerHTML=tday[nday]+", "+tmonth[nmonth]+" "+ndate;
+}
+
+GetClock();
+setInterval(GetClock,1000);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Welcome to GuruGains!</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Profitable Stocks and Options Signals">
+        <meta name="author" content="GuruGains">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+
+    <body>
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+              <div class="my-3 p-3">
+                <h2 class="display-5">The Last Step</h2>
+                <p class="lead">Send your key to GuruGainsBot!</p>
+                <p>You can find him here <a href="#">GuruGainsBot</a></p>
+              </div>
+              <div class="bg-dark box-shadow mx-auto" style="overflow-y: scroll; width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                <div class="sticky-top bg-dark" style="border-radius: 21px 21px 0 0;">
+                  <h5 class="text-center pb-2 pt-1" style="color: white">GuruGainsBot</h5>
+                </div>
+                  
+                <div class="bg-light box-shadow m-auto" style="width: 90%; height: 120px; border-radius: 10px 10px 10px 10px;">
+                    <div class="d-flex flex-column justify-content-start">
+                        <p class="pl-2 pt-2 text-left"><span style="color: blue"><strong>GuruGains</strong></span></br>Copy your key below</p>
+                        </div>
+                    
+                    <div class="d-flex justify-content-end pr-4">
+                        <div class="bg-light box-shadow" style="width: 30%; height: 60px; border-radius: 10px 10px 10px 10px;">
+                          <div class="d-flex flex-column justify-content-start">
+                          <p class="pr-2 pt-2 text-right" id="re"></p>
+                          </div>
+                        </div>
+                          </div>
+                  
+                
+                  </div>
+                  <span class=""></br></span>
+                  <span class=""></br></span>
+                  
+              </div>
+            </div>
+            
+            <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+              <div class="my-3 py-3">
+                <h2 class="display-5">Grab some wisdom on the way out!</h2>
+                <p class="lead">Follow us on Twitter and Facebook!</p>
+              </div>
+              <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                <span class=""></br></span>
+                  <div class="bg-primary box-shadow m-auto" style="width: 90%; height: 100px; border-radius: 10px 10px 10px 10px;">
+                    <div class="d-flex flex-column justify-content-start">
+                    <p class="pl-2 pt-2 text-left"><span style="color: white"><strong>GuruGains</strong></span></br>Take risks and be patient</br>We are here to balance your fear and greed</p>
+                    </div>
+                  </div>
+                  <span class=""></br></span>
+                  <span class=""></br></span>
+                  <span class=""></br></span>
+                  <span class=""></br></span>
+                  
+                <div class="container">
+              
+                  <div class="social-buttons m-auto">        
+                  <!-- facebook  Button -->
+                          <a href="http://www.facebook.com" target="blank" class="m-auto pr-2"> 
+                            <div class="social-icon facebook">
+                              <i class="fa fa-facebook" aria-hidden="true"></i> 
+                            </div>
+                          </a>
+                    <!-- TwitterButton -->
+                          <a href="http://twitter.com/" target="blank" class="m-auto">
+                            <div class="social-icon twitter">
+                              <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </div> 
+                          </a>
+                  </div>
+                  </div>
+      
+              </div>
+            </div>
+          </div>
+    </body>
+
+    <script>
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var s = getParameterByName('session_id');
+    var k = getParameterByName('key');
+    document.getElementById('re').innerHTML = `You</br>${k}`
+    fetch(`/success/${s}/key/${k}`).then((x) => {
+        console.log('s')
+    
+})
+    
+    </script>
+</html>
