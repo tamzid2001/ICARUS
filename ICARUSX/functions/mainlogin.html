@@ -1,0 +1,522 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/mainlogin.css">
+		<link rel="stylesheet" href="/addapp.css">
+		<script src="https://kit.fontawesome.com/83a5399452.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/themes/splide-skyblue.min.css">
+		<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+		<style>
+
+fieldset, img {border:0}
+
+ol, ul, li {list-style:none}
+
+:focus {outline:none}
+
+body,
+input,
+textarea,
+select {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #4c4c4c;
+}
+
+p {
+  font-size: 12px;
+  display: inline-block;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #4c4c4c;
+  text-align: center;
+}
+
+html{
+  background-color: #ffffff;
+}
+
+
+input[type=radio] {
+  visibility: hidden;
+}
+
+input[type=radio]:checked + label:after {
+	opacity: 1;
+}
+
+hr{
+  color: #a9a9a9;
+  opacity: 0.3;
+}
+
+input[type=text],input[type=password]{
+  -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  background-color: #fff; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+input[type=password]{
+  
+}
+button {
+	outline: none;
+}
+button:focus {
+	outline: none;
+}
+#icon1 {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+#icon2 {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+#icon3 {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+#icon4 {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+#icon {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+button.button {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  border-radius: 5px; 
+  background-color: #3a57af; 
+  border: none;
+  transition: all 0.1s linear 0s; 
+  top: 0px;
+  position: relative;
+}
+
+.box {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel {
+    background-color: #fff;
+    border-radius: 10px;
+	padding: 15px 25px;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  .pricing-table {
+    box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-price {
+    color: #016FF9;
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+		</style>
+    </head>
+
+    <body>
+		
+		<div class="splide" id="splide">
+			<div class="splide__track">
+			  <ul class="splide__list">
+	
+				<li class="splide__slide">
+					<div style="width: 100vw;height: 100vh;background-image: url('/clouds-anim.svg');" class="box m-auto container">
+            <div class="d-flex justify-content-end" style="position: absolute;top: 25px;right: 25px;">
+              <button onclick="nextSlide()" style="border: 0; background-color: rgba(0, 0, 0, 0.0);font-weight: bold;">Sign Up <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="d-flex flex-column container" style="width: 100vw;">
+						<div class="mb-3 mx-auto">
+							<img style="width: 200px;height: 150px;" src="/Icarus_Investments_Logo_Final.png"/>
+								</div>
+			<div class="panel pricing-table d-flex flex-column">
+		  
+			<div class="d-flex flex-row justify-content-center mb-1">
+			<label class="p-2 mb-1 ml-1 mt-1" id="icon" for="name"><i class="far fa-envelope"></i></label>
+			<input style="width: 100%;" type="text" name="name" id="lgneml" placeholder="Email" required/>
+			</div>
+			<div class="d-flex flex-row justify-content-center">
+			<label class="p-2 ml-1 mt-1" id="icon" for="name"><i class="fas fa-key"></i></label>
+			<input style="width: 100%;" type="password" name="name" id="lgnpwd" placeholder="Password" required/>
+    </div>
+    <a class="pt-1 pl-1" href="#">Forgot Email/Password?</a>
+			 <!-- <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p> -->
+			 <div class="d-flex justify-content-center">
+			 <button style="width: 100%;" id="login-Btn" class="button p-2 mt-4">Log In</button>
+			 </div>
+			
+		  </div>
+		</div>
+		</div>
+		  </li>
+		  <li class="splide__slide">
+			<div style="width: 100vw;height: 100vh;background-image: url('/clouds-anim.svg');" class="box m-auto container">
+				<div class="d-flex justify-content-start" style="position: absolute;top: 25px;left: 25px;">
+          <button onclick="prevSlide()" style="border: 0; background-color: rgba(0, 0, 0, 0.0);font-weight: bold;"><i class="fas fa-arrow-left"></i> Log In</button>
+        </div>
+				<div class="d-flex flex-column container" style="width: 100vw;">
+				<div class="mb-3 mx-auto">
+					<img style="width: 200px;height: 150px;" src="/Icarus_Investments_Logo_Final.png"/>
+						</div>
+	<div class="panel pricing-table d-flex flex-column pt-0">
+	<hr>
+	<div class="d-flex flex-row justify-content-center mb-1">
+	<label class="p-2 mb-1 ml-1 mt-1" id="icon1" for="name"><i id="sl1" class="far fa-envelope"></i></label>
+	<input style="width: 100%;" type="text" name="name" id="sgnupeml1" placeholder="Email" required/>
+	</div>
+<div class="d-flex flex-row justify-content-center mb-1">
+	<label class="p-2 mb-1 ml-1 mt-1" id="icon2" for="name"><i id="sl2" class="far fa-envelope"></i></label>
+	<input style="width: 100%;" type="text" name="name" id="sgnupeml2" placeholder="Confirm Email" required/>
+	</div>
+	<div class="d-flex flex-row justify-content-center mb-1">
+	<label class="p-2 ml-1 mt-1" id="icon3" for="name"><i id="sl3" class="fas fa-key"></i></label>
+	<input style="width: 100%;" type="password" name="name" id="sgnuppwd1" placeholder="Password" required/>
+</div>
+	<div class="d-flex flex-row justify-content-center">
+	<label class="p-2 ml-1 mt-1" id="icon4" for="name"><i id="sl4" class="fas fa-key"></i></label>
+	<input style="width: 100%;" type="password" name="name" id="sgnuppwd2" placeholder="Confirm Password" required/>
+</div>
+	 <!-- <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p> -->
+	 <div class="d-flex justify-content-center">
+	 <button style="width: 100%;" id="signup-Btn" class="button p-2 mt-4">Sign Up</button>
+	 </div>
+  </div>
+</div>
+</div>
+  </li>
+		  </ul>
+		  </div>
+		</div>
+<!-- <div id="overlay" style="width: 90vw;height: 90vh;z-index: 440;opacity: 0.6;" class="bg-dark"></div> -->
+<!-- <div id="homescreen">
+	<div class="bubble d-flex flex-column container"></br> Add to Homescreen to Sign Up! </br></br>
+	<img style="z-index:inherit;left: 50%; height: 50px; width: 50px;" src="Icarus_Investments_Logo_Final.png"/>
+	</br><p style="padding:20px;font-size: 12px;text-align: left;"> Installing our app ensures a fast and reliable connection to our services. </p></br>
+</div>
+</div> -->
+<script>
+	var splide = new Splide( '#splide', {
+    direction: 'ltr',
+    pagination: false,
+	arrows: false,
+    width : '100vw',
+    height: '100vh',
+    classes: {
+    prev  : 'splide__arrow--prev left-arrow',
+	next  : 'splide__arrow--next right-arrow',
+	drag : false
+	}
+} ).mount();
+
+function nextSlide() {
+
+splide.go('+')
+}
+
+function prevSlide() {
+
+splide.go('-')
+}
+// If a fetch error occurs, log it to the console and show it in the UI.
+var handleFetchResult = function(result) {
+    if (!result.ok) {
+      return result.json().then(function(json) {
+        if (json.error && json.error.message) {
+          throw new Error(result.url + ' ' + result.status + ' ' + json.error.message);
+        }
+      }).catch(function(err) {
+        showErrorMessage(err);
+        throw err;
+      });
+    }
+    return result.json();
+  };
+  
+  // Create a Checkout Session with the selected plan ID
+  var createCheckoutSession = function(priceId) {
+    return fetch("/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        priceId: priceId
+      })
+    }).then(handleFetchResult);
+  };
+  
+  // Handle any errors returned from Checkout
+  var handleResult = function(result) {
+    if (result.error) {
+      showErrorMessage(result.error.message);
+    }
+  };
+  
+  var showErrorMessage = function(message) {
+    var errorEl = document.getElementById("error-message")
+    errorEl.innerText = message;
+    errorEl.style.display = "block";
+  };
+
+$("#sgnupeml1").keyup(function(){
+
+var email = $("#sgnupeml1").val();
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (!filter.test(email)) {
+  //alert('Please provide a valid email address');
+  $("#sl1").removeClass("far fa-envelope");
+  $("#sl1").addClass("fas fa-times");
+	$('#icon1').css("background-color", "#dc143c")
+  return false;
+} else {
+	$("#sl1").removeClass("fas fa-times");
+  $("#sl1").addClass("fas fa-check");
+  $('#icon1').css("background-color", "#228b22")
+  //#228b22
+   return true;
+}
+
+});
+
+$("#sgnupeml2").keyup(function(){
+
+var email = $("#sgnupeml2").val();
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (!filter.test(email) && (email != $("#sgnupeml1").val())) {
+  //alert('Please provide a valid email address');
+  $("#sl2").removeClass("far fa-envelope");
+  $("#sl2").addClass("fas fa-times");
+	$('#icon2').css("background-color", "#dc143c")
+  return false;
+} else {
+	$("#sl2").removeClass("fas fa-times");
+  $("#sl2").addClass("fas fa-check");
+  $('#icon2').css("background-color", "#228b22")
+  //#228b22
+   return true;
+}
+
+});
+
+$("#sgnuppwd1").keyup(function(){
+
+var pwd = $("#sgnuppwd1").val();
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (pwd.length < 8) {
+  //alert('Please provide a valid email address');
+  $("#sl3").removeClass("fas fa-key");
+  $("#sl3").addClass("fas fa-times");
+	$('#icon3').css("background-color", "#dc143c")
+  return false;
+} else {
+	$("#sl3").removeClass("fas fa-times");
+  $("#sl3").addClass("fas fa-check");
+  $('#icon3').css("background-color", "#228b22")
+  //#228b22
+   return true;
+}
+
+});
+
+$("#sgnuppwd2").keyup(function(){
+
+var pwd = $("#sgnuppwd2").val();
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (pwd.length < 8) {
+  //alert('Please provide a valid email address');
+  $("#sl4").removeClass("fas fa-key");
+  $("#sl4").addClass("fas fa-times");
+	$('#icon4').css("background-color", "#dc143c")
+  return false;
+} else {
+	$("#sl4").removeClass("fas fa-times");
+  $("#sl4").addClass("fas fa-check");
+  $('#icon4').css("background-color", "#228b22")
+  //#228b22
+   return true;
+}
+
+});
+
+// $("#login-Btn").click(function(){
+
+// var email = $("#email").val();
+// var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+// if (!filter.test(email)) {
+//    alert('The email address you provide is not valid');
+//    $("#email").focus();
+//    return false;
+// } else {
+   
+// }
+
+// });
+
+
+	window.addEventListener("DOMContentLoaded", () => {
+		var firebaseConfig = {
+    apiKey: "AIzaSyA_CCk2AKClOObl7A4GMaji5AACOI_DyCM",
+    authDomain: "icarus-b84d3.firebaseapp.com",
+    projectId: "icarus-b84d3",
+    storageBucket: "icarus-b84d3.appspot.com",
+    messagingSenderId: "587681580348",
+    appId: "1:587681580348:web:9d5e9203231d5ec2c3ca39",
+    measurementId: "G-D66L362PH3"
+  		};
+
+	  firebase.initializeApp(firebaseConfig);
+
+	  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+
+	  document
+		.getElementById("login-Btn")
+		.addEventListener("click", (event) => {
+		  event.preventDefault();
+		  const login = document.getElementById("lgneml").value;
+		  const password = document.getElementById("lgnpwd").value;
+
+		  firebase
+			.auth()
+			.signInWithEmailAndPassword(login, password)
+			.then(({user}) => {
+			  return user.getIdToken().then((idToken) => {
+				return fetch("/sessionLogin", {
+				  method: "POST",
+				  headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+					"CSRF-Token": Cookies.get("XSRF-TOKEN"),
+				  },
+				  body: JSON.stringify({ idToken }),
+				});
+			  });
+			})
+			.then(() => {
+			  return firebase.auth().signOut();
+			})
+			.then(() => {
+			  window.location.assign("/app/main");
+			});
+		  return false;
+		});
+	});
+	document
+          .getElementById("signup-Btn")
+          .addEventListener("click", (event) => {
+            event.preventDefault();
+            const login = document.getElementById("sgnupeml2").value;
+            const password = document.getElementById("sgnuppwd2").value;
+
+            firebase
+              .auth()
+              .createUserWithEmailAndPassword(login, password)
+              .then(({user}) => {
+                return user.getIdToken().then((idToken) => {
+                  return fetch("/sessionLogin", {
+                    method: "POST",
+                    headers: {
+                      Accept: "application/json",
+                      "Content-Type": "application/json",
+                      "CSRF-Token": Cookies.get("XSRF-TOKEN"),
+                    },
+                    body: JSON.stringify({ idToken }),
+                  })
+                });
+              })
+              .then(() => {
+                return firebase.auth().signOut();                
+              }).then(()=>{
+                return fetch("/app/create").then(()=>{return true;})
+                //.then(()=>{return true;}).catch((err)=>{return console.log(err);})
+              }).then(()=>{
+                window.location.assign('/app/subscribe')
+              })
+              .catch((err) => {
+				  return console.log(err);
+			  })
+          });
+  </script>
+</body>
+</html>

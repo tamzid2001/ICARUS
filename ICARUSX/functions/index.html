@@ -1,0 +1,727 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/themes/splide-skyblue.min.css">
+        <script src="https://kit.fontawesome.com/83a5399452.js" crossorigin="anonymous"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'/>
+        <script src="anime.min.js"></script>
+        <link rel="stylesheet" href="/subcard2.css">
+        <link rel="stylesheet" href="/addapp.css">
+        <link rel="stylesheet" href="/bird.css">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<script> 
+  $(function(){
+    $("#termsContent").load("/termscontent.html"); 
+  });
+  $(function(){
+    $("#ppContent").load("/ppcontent.html"); 
+  });
+  $(function(){
+      $("#f").load("/faqcontent.html")
+  })
+  $(function(){
+      $("#dis").load("/disclaimer.html")
+  })
+  </script>
+
+  <style>
+      @import url(https://fonts.googleapis.com/css?family=Lato);
+ body {
+	 font-family: 'Lato', sans-serif;
+	 color: #000;
+}
+.card {
+  border: none;
+  border-radius: 0px;
+}
+
+.card-header {
+  border: none;
+}
+.cnttxt {
+
+text-align: center;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+}
+
+.anim li {
+  opacity: 0.2;
+}
+
+.anim2 li {
+  opacity: 0.2;
+}
+
+.rotate {
+  
+  transition: .35s;
+  transform: rotate(90deg);
+
+
+}
+
+.rotate-back {
+  transition: .35s;
+  transform: rotate(0deg);
+
+}
+
+.faq-panel {
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .splide__arrow svg {
+    fill: #ffc107 !important;
+  }
+
+  .splide__arrow:hover svg {
+    fill: #ffc107 !important;
+
+  }
+
+  .modal-content {
+    border: none;
+    border-radius: 0px;
+}
+
+.close {
+    text-shadow: none;
+    opacity: 1;
+}
+
+.timefram {
+    width: 30px;
+    height: 30px;
+    background-color: #fcb127;
+    border-radius: 5px;
+    color: black;
+}
+
+.modal-dialog-full-width {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width:none !important;
+        border: 0px solid white;
+        border-radius: 0px;
+
+    }
+
+    .modal-content-full-width  {
+        height: auto !important;
+        min-height: 100% !important;
+        border: 0px solid white;
+        border-radius: 0px;
+         
+    }
+
+/* .list-group-item:hover {
+    background-color: lightgrey;
+}
+
+.d:nth-child(odd){
+  background:lightgrey
+} */
+.modal-header{
+    border-color: #ffffff00;
+}
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 80vh;
+    overflow-y: auto;
+}
+
+button.button {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  border-radius: 5px; 
+  background-color: #3a57af; 
+  top: 0px;
+  position: relative;
+  border: none;
+}
+
+
+  </style>
+    </head>
+
+    <body>
+      <div class="splide" id="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+
+            <li class="splide__slide">
+                <div style="width: 100vw;height: 100vh;background-image: url('clouds-anim.svg');">
+                  <div class="bird-container bird-container--one">
+                    <div class="bird bird--one"></div>
+                  </div>
+                  
+                  <div class="bird-container bird-container--two">
+                    <div class="bird bird--two"></div>
+                  </div>
+                  
+                  <div class="bird-container bird-container--three">
+                    <div class="bird bird--three"></div>
+                  </div>
+                  
+                  <div class="bird-container bird-container--four">
+                    <div class="bird bird--four"></div>
+                  </div>
+                    <div class="d-flex flex-column my-auto">
+                        <div class="mx-auto">
+                    <img style="width: 225px;height: 175px; z-index: 100;" src="/Icarus_Investments_Logo_Final.png"/>
+                    
+                    </div>
+                    <div class="container mx-auto mt-4">
+                    <div class="panel faq-table d-flex flex-column">
+                      <span class="pricing-price mb-3">About Us</span> 
+                      <div style="overflow-y: auto;">
+                        Invest in the currency exchange market like a trading firm. Our proprieatary algorithm uses proven quantative finance to consistently scalp a small portion a trillion dollar market with high probability. <strong>Sign up, pay and connect</strong> your trading account to our well-oiled proprieatary trading software.
+                      </br></br>
+                      What is the currency exchange market?
+                    </br></br>
+                    More popularly known as forex, it is a system of exchanging currencies with different countries.
+                  </br></br>
+                  At Icarus Investments we take a systematic approach.
+                      </div>
+                      <!-- <button style="z-index: 10;" class="next-slide" onclick="nextSlide()">Pricing Plan ></button> -->
+                    </div>
+                    </div>
+                    </div>
+                </div>
+               
+            </li>
+            <li class="splide__slide">
+                <div style="width: 100vw;height: 100vh;background-image: url(clouds-anim.svg);">
+                  <div class="bird-container bird-container--one">
+                    <div class="bird bird--one"></div>
+                  </div>
+                  
+                  <div class="bird-container bird-container--two">
+                    <div class="bird bird--two"></div>
+                  </div>
+                  
+                  <div class="bird-container bird-container--three">
+                    <div class="bird bird--three"></div>
+                  </div>
+                  
+                  <div class="bird-container bird-container--four">
+                    <div class="bird bird--four"></div>
+                  </div>
+                  <div class="d-flex flex-column">
+                  <div class="mt-3 mx-auto"> 
+                  <img style="width: 100px;height: 100px;z-index: 100;" src="/cloud-loading-2.svg" alt="">
+                  </div>
+                    <div class="container mx-auto">
+                      <div class="panel pricing-table" style="height: fit-content;">
+                        
+                        <div class="pricing-plan">
+                          <span class="pricing-price mb-3 mx-auto pl-3 pr-3" style="width: fit-content;border-bottom: 5px solid;color: #FF7518;">ICARUS X</span>
+                          <ul class="anim pricing-features mb-3" style="list-style: none;">
+                            <li class="mb-3 pricing-features-item" style="font-size: 16px;">$150/Month</li>
+                            <li class="mb-3 pricing-features-item"><i class="fas fa-check"></i>&nbsp;No Configuration/Setup Required</li>
+                            <li class="mb-3 pricing-features-item cnttxt"><i class="fas fa-check"></i>&nbsp;Strict Broker Requirements</li>
+                            <li class="mb-3 pricing-features-item cnttxt"><i class="fas fa-check"></i>&nbsp;1%/3% Equity Risk per Trade</li>
+                            <li class="mb-2 pricing-features-item cnttxt"><i class="fas fa-check"></i>&nbsp;Analytics Dashboard</li>
+                            <li class="mb-2 pricing-features-item cnttxt"><i class="fas fa-check"></i>&nbsp;Manage Billing with&nbsp;<i style="color: purple;font-size: 2rem;" class="fab fa-stripe"></i></li>
+                            <li class="mb-3 pricing-features-item cnttxt"><i class="fas fa-check"></i>&nbsp;99.9% Server Uptime</li>
+                            <li class="mb-3 pricing-features-item cnttxt"><i class="fas fa-check"></i>&nbsp;24/7 Customer Support</li>
+                            <li class="mb-3 pricing-features-item cnttxt" style="font-size: 16px;">30-Day Money Back Gaurantee</li>
+                            <button data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary my-auto"><i class="mt-1 mb-1 pr-2 fas fa-cloud-download-alt"></i><strong>Install App</strong></a>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </li>
+
+            <li class="splide__slide">
+              <div style="width: 100vw;height: 100vh;background-image: url('clouds-anim.svg');">
+                <div class="bird-container bird-container--one">
+                  <div class="bird bird--one"></div>
+                </div>
+                
+                <div class="bird-container bird-container--two">
+                  <div class="bird bird--two"></div>
+                </div>
+                
+                <div class="bird-container bird-container--three">
+                  <div class="bird bird--three"></div>
+                </div>
+                
+                <div class="bird-container bird-container--four">
+                  <div class="bird bird--four"></div>
+                </div>
+                <div class="d-flex flex-column">
+                    <div class="mt-5 mx-auto mb-3">
+                <img style="width: 64px;height: 64px;z-index: 100;" src="graph-report.png"/>
+                    </div>
+                      <div class="container mx-auto mt-4">
+                        <div class="panel pricing-table d-flex flex-column">
+                          <span class="pricing-price mb-3 mx-auto pl-3 pr-3" style="color: #077bff;border-bottom: 5px solid; width: fit-content;">Backtests</span>
+                          <ul class="anim2 pricing-features mb-3" style="list-style: none;">
+                            <li class="mb-3 pricing-features-item">Avg Gain/Month: </li>
+                            <li class="mb-3 pricing-features-item">Avg Winrate/Month: </li>
+                            <li class="mb-3 pricing-features-item">Avg Drawdown/Month: </li>
+                          </ul>
+                          <div>  
+                            <a class="btn bg-primary" href="#" style="width: 100%;font-weight: bold;color: white;"><i class="fas fa-chart-pie pr-2"></i> Backtests<i class="fas fa-chevron-right pt-1" style="float: right;"></i></a>
+                          </div>
+
+                          <div class="mt-3" style="text-align: left;border: 2px solid goldenrod; border-radius: 10px;">
+                            <div class="m-auto my-3 p-2">
+                            <small class="" style="font-size: xx-small;">*Disclaimer: The past performance of any trading system or methodology is not necessarily indicative of future results.</small>
+                          </div>
+                          </div>
+                        </div>
+                        </div>
+                </div>
+            </div>
+              
+            </li>
+
+            <li class="splide__slide">
+              <div style="width: 100vw;height: 100vh;background-image: url('clouds-anim.svg');">
+                <div class="bird-container bird-container--one">
+                  <div class="bird bird--one"></div>
+                </div>
+                
+                <div class="bird-container bird-container--two">
+                  <div class="bird bird--two"></div>
+                </div>
+                
+                <div class="bird-container bird-container--three">
+                  <div class="bird bird--three"></div>
+                </div>
+                
+                <div class="bird-container bird-container--four">
+                  <div class="bird bird--four"></div>
+                </div>
+                <div class="d-flex flex-column">
+                  <div class="mt-5 mx-auto mb-3">
+                    <img style="left: 25%;width: 64px;height: 64px;" src="faq.png"/>
+                  </div>
+            
+              <div class="container">          
+              <div class="faq-table" style="overflow-y: scroll;height: 75vh;border-radius: 10px;background-color: white;">
+                <span class="pricing-price mt-2 mb-3 mx-auto pl-3 pr-3" style="color: #077bff;border-bottom: 5px solid; width: fit-content;">Questions & Answers</span>
+                <div id="f" style="text-align: left !important;"></div>
+              </div>
+              </div>
+                    </div>
+                    </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div style="width: 100vw;height: 100vh;background-image: url('clouds-anim.svg');">
+                        <div class="d-flex flex-column">
+                              <div class="container mx-auto mt-4">
+                                <div class="panel faq-table d-flex flex-column" style="height: 92vh;overflow-y: auto;">
+                                  <img class="mx-auto" src="/Icarus_Investments_Logo_Final.png" style="width: 75px;height: auto;"/>
+                                  <p style="text-align: center;font-size: 12px;">2021 &#169; Icarus Investments, LLC. All Rights Reserved.</p>
+                                  <span style="color: #FF7518;border-bottom: 5px solid; width: fit-content;" class="pricing-price mb-3 mt-2 pl-3 pr-3 mx-auto">Contact Us</span>
+                                  <p style="text-align: center;">Have any questions? Feel free to shoot us an e-mail and we will get back to you shortly!</p>
+                                  <div class="mt-2 mb-5">  
+                                    <a id="csupport" class="btn bg-primary" href="#" style="width: 100%;font-weight: bold;color: white;"><i class="fas fa-envelope pt-1 pr-2"></i> Contact Us<i class="fas fa-chevron-right pt-1" style="float: right;"></i></a>
+                                  </div>
+                                  <h1 style="color: #FF7518;border-bottom: 5px solid; width: fit-content;" class="pricing-price pl-3 pr-3 mx-auto mb-3">Other</h1>
+                                  <div>  
+                                    <a data-toggle="modal" data-target="#te" class="btn bg-primary mb-3" href="#" style="width: 100%;font-weight: bold;color: white;"><i style="float: left;" class="fas fa-file-alt pt-1"></i> Terms & Conditions<i class="fas fa-chevron-right pt-1" style="float: right;"></i></a>
+                                    <a data-toggle="modal" data-target="#pp" class="btn bg-primary mb-3" href="#" style="width: 100%;font-weight: bold;color: white;"><i style="float: left;" class="fas fa-file-alt pt-1"></i> Privacy Policy<i class="fas fa-chevron-right pt-1" style="float: right;"></i></a>
+                                    <a data-toggle="modal" data-target="#disclaimer" class="btn bg-primary mb-3" href="#" style="width: 100%;font-weight: bold;color: white;"><i style="float: left;" class="fas fa-file-alt pt-1"></i> Disclaimer Policy<i class="fas fa-chevron-right pt-1" style="float: right;"></i></a>
+                                    <a data-toggle="modal" data-target="#do" class="btn bg-primary mt-3" href="#" style="width: 100%;font-weight: bold;color: white;"><i class="fas fa-seedling pt-1 pr-2"></i> Initiative<i class="fas fa-chevron-right pt-1" style="float: right;"></i></a>
+                                  </div>
+                                  
+                                </div>
+                                
+                                </div>
+                        </div>
+                    </div>
+                      
+                    </li>
+                    </div>
+              </div>
+            
+          </ul>
+        </div>
+      </div>
+
+                  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+  
+        
+      
+        <div id="homescreen">
+
+	<div class="bubble d-flex flex-column container">
+    <button type="button" class="close d-flex justify-content-end pt-3 pr-3" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </br> <strong>Add to Homescreen to Sign Up!</strong></br></br>
+      <div class="d-flex mx-auto" style="border: 2px solid #000; background-color: white;border-radius: 20px;width: 144px;height: 144px;">
+  <img style="z-index:inherit;position: relative;left: 6%;top:15%;height: 90px; width: 120px;" src="Icarus_Investments_Logo_Final.png"/>
+</div>
+<h1 class="mt-5 d-flex mx-auto">
+  <div class="d-flex flex-row">
+  <div class="d-flex flex-column p-2" style="text-align: center;">
+    <div>
+<i class="far fa-share-square"></i>
+</div>
+  <div class="p-2">
+    <small style="font-size: small;">Share</small>
+  </div>
+</div>
+ <i class="p-2 fas fa-arrow-right"></i>
+  <div class="d-flex flex-column" style="text-align: center;">
+    <div>
+      <i class="far fa-plus-square"></i>
+</div>
+  <div class="p-2" style="">
+    <small style="font-size: small;">Add to </br>Homescreen</small>
+  </div>
+</div>
+</div>
+</h1>
+	</br><p style="font-size: 12px;text-align: center;">*Installing our app ensures a fast and reliable connection to our services. </p></br>
+</div>
+</div>
+    
+  </div>
+</div>
+
+<div class="modal" id="te" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-full-width" role="document">
+    <div class="modal-content modal-content-full-width">
+      <div class="modal-header m-0 p-0 d-flex justify-content-between">
+          <p id="termsheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;">Terms & Conditions</p>
+          <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+            <span><i class="fas fa-times"></i></span>
+          </button>
+        </div>
+      <div id="termsContent" onscroll="termsScroll(this)" class="modal-body container pt-0" style="overflow-wrap: break-word;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="pp" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-full-width" role="document">
+    <div class="modal-content modal-content-full-width">
+      <div class="modal-header m-0 p-0 d-flex justify-content-between">
+          <p id="ppheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;">Privacy Policy</p>
+          <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+            <span><i class="fas fa-times"></i></span>
+          </button>
+        </div>
+      <div id="ppContent" onscroll="ppScroll(this)" class="modal-body container pt-0" style="overflow-wrap: break-word;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="do" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-full-width" role="document">
+    <div class="modal-content modal-content-full-width">
+      <div class="modal-header m-0 p-0 d-flex justify-content-between">
+          <p id="dheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;"><i class="fas fa-seedling" style="color: #50C878;"></i> Donate</p>
+          <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+            <span><i class="fas fa-times"></i></span>
+          </button>
+        </div>
+      <div id="" onscroll="headerScroll(this)" class="modal-body container pt-0">
+          <h1 class="mt-n2 mb-3" style="border-bottom: 5px solid black;">Initiative</h1>
+          <!-- <div class="panel faq-table mb-5 mt-3" style="overflow-y: scroll;height: 70vh;"> -->
+              <div class="donate-body">
+              <p>With your help we can grow a charitable account to make annualized donations to schools and to communities in need.</p>
+              </div>
+              <h1 class="mb-3" style="border-bottom: 5px solid black;">Introduction</h1>
+              <div class="donate-body">
+              <p>In a world where the rich will continue to get richer, Icarus Investments feels morally obligated to manage and create an investment account for under-privileged and poorer communities. Our intentions are to donate profits on an annual basis to charities and schools that need it the most. Over the years, poorly funded schools have had to make budget cuts that cut out important curriculums. Quality education should not be about money and should be focused on the students. We hope to revitalize Arts and Music curriculums to bolster creativity, provide quality education resources and technology and create a vetting program for exceptional and inspiring teachers over the coming years. We believe that progress can be made with time and initiative from one generation to the next. If you believe that children in poorer communities deserve a better shot at success or helping to minimize our massive wealth gap, please support our project!</p>
+              </div>
+              <!-- </div> -->
+          <h1 class="mb-3 mt-3" style="border-bottom: 5px solid black;">Donate</h1>
+          <div class="panel pricing-table d-flex flex-column" style="height: fit-content;">
+              <div class="d-flex flex-row justify-content-center mb-1">
+                  <input style="width: 100%;" type="number" name="amt" id="amount-input" placeholder="$0.00" required/>
+              </div>
+          <div class="mt-3 mb-3 p-0 container d-flex flex-row justify-content-between">
+              <div id="do5" class="cnttxt timeframe">$5</div>
+              <div id="do25" class="cnttxt timeframe">$25</div>
+              <div id="do50" class="cnttxt timeframe">$50</div>
+              <div id="do100" class="cnttxt timeframe">$100</div>
+              <div id="do500" class="cnttxt timeframe">$500</div>      
+          </div>
+              <button id="donate-button" class="p-2 button text-center" style="font-size: 16px;">Donate <i class="fas fa-chevron-right pt-1" style="float: right;"></i></button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="disclaimer" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-full-width" role="document">
+    <div class="modal-content modal-content-full-width">
+      <div class="modal-header m-0 p-0 d-flex justify-content-between">
+          <p id="disheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;">Disclaimer Policy</p>
+        <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+          <span><i class="fas fa-times"></i></span>
+        </button>
+      </div>
+      <div onscroll="disScroll(this)" class="modal-body pt-0">
+          <div id="dis">
+              
+          </div>
+    </div>
+  </div>
+</div>
+</div>
+    
+
+
+        <script>
+
+$(function () {
+      $('#csupport').click(function (event) {
+        var email = 'sample@gmail.com';
+        var subject = 'Customer Support';
+        var emailBody = '';
+        var attach = 'path';
+        document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
+      });
+    });
+
+function headerScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('dheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('dheader').style.opacity = 1;
+            }
+
+        }
+
+        function ppScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('ppheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('ppheader').style.opacity = 1;
+            }
+
+        }
+
+        function termsScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('termsheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('termsheader').style.opacity = 1;
+            }
+
+        }
+
+        function bScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('bheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('bheader').style.opacity = 1;
+            }
+
+        }
+        function disScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('disheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('disheader').style.opacity = 1;
+            }
+
+        }
+
+function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+        
+            var o = getParameterByName('other');
+
+            if(o == "termsandconditions"){
+              $('#te').modal('show');
+            } else if(o == "privacypolicy") {
+              $('#pp').modal('show');
+            } else if(o == "disclaimer") {
+              $('#disclaimer').modal('show');
+            } 
+
+           var n = anime({
+  targets: '.anim li',
+  opacity: 1,
+  delay: anime.stagger(100) // increase delay by 100ms for each elements.
+});
+
+var n2 = anime({
+  targets: '.anim2 li',
+  opacity: 1,
+  delay: anime.stagger(100) // increase delay by 100ms for each elements.
+});
+var splide = new Splide( '#splide', {
+    direction: 'ltr',
+    pagination: false,
+    width : '100vw',
+    height: '100vh',
+    classes: {
+    prev  : 'splide__arrow--prev left-arrow',
+    next  : 'splide__arrow--next right-arrow'
+	}
+} ).mount();
+
+if(splide.index == 0) {
+  var all = document.getElementsByClassName('left-arrow');
+for (var i = 0; i < all.length; i++) {
+  all[i].style.display = 'none';
+}
+}
+
+splide.on( 'move', function() {
+  if(splide.index == 1){
+    n.play();
+  } 
+  
+  if(splide.index == 2){
+    n2.play();
+
+  }
+
+
+})
+
+splide.on( 'move', function() {
+    
+    if(splide.index == 0) {
+  var all = document.getElementsByClassName('left-arrow');
+for (var i = 0; i < all.length; i++) {
+  all[i].style.display = 'none';
+}
+}
+    if(splide.index != 0) {
+  var all = document.getElementsByClassName('left-arrow');
+for (var i = 0; i < all.length; i++) {
+  all[i].style.display = 'block';
+}
+}
+
+if(splide.index == splide.length - 1) {
+  var all3 = document.getElementsByClassName('right-arrow');
+for (var i = 0; i < all3.length; i++) {
+  all3[i].style.display = 'none';
+}
+}
+
+if(splide.index != splide.length - 1) {
+  var all3 = document.getElementsByClassName('right-arrow');
+for (var i = 0; i < all3.length; i++) {
+  all3[i].style.display = 'block';
+}
+}
+
+
+    
+} );
+
+// splide2.on( 'move', function() {
+//     // do something
+//     n.play();
+//     if(splide2.index == 0) {
+//   var all = document.getElementsByClassName('top-arrow');
+// for (var i = 0; i < all.length; i++) {
+//   all[i].style.display = 'none';
+// }
+// }
+//     if(splide2.index != 0) {
+//   var all = document.getElementsByClassName('top-arrow');
+// for (var i = 0; i < all.length; i++) {
+//   all[i].style.display = 'block';
+// }
+// }
+
+// if(splide2.index == splide2.length - 1) {
+//   var all3 = document.getElementsByClassName('bottom-arrow');
+// for (var i = 0; i < all3.length; i++) {
+//   all3[i].style.display = 'none';
+// }
+// }
+
+// if(splide2.index != splide2.length - 1) {
+//   var all3 = document.getElementsByClassName('bottom-arrow');
+// for (var i = 0; i < all3.length; i++) {
+//   all3[i].style.display = 'block';
+// }
+// }
+    
+// } );
+
+  function nextSlide() {
+
+    splide.go('+')
+  }
+
+  function prevSlide() {
+
+splide.go('-')
+}
+
+
+        </script>
+    </body>
+</html>

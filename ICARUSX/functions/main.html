@@ -1,0 +1,1762 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="manifest" href="/manifest.json">
+
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="76x76" href="icons/touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="120x120" href="icons/touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icons/touch-icon-ipad-retina.png">
+
+<link rel="icon" sizes="192x192" href="icons/favicon-192.png">
+<link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 62x62" href="icons/favicon.ico">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Icarus Investments">
+
+<!-- Windows 8 -->
+<meta name="msapplication-TileImage" content="icons/favicon-144.png">
+<meta name="msapplication-TileColor" content="#fff">
+<meta name="theme-color" content="#262626">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <script src="https://unpkg.com/metaapi.cloud-sdk/index.js"></script>
+        <script type="text/javascript" src="/master.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <script src="https://kit.fontawesome.com/83a5399452.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+        <link rel="stylesheet" href="/circle.css">
+        <link rel="stylesheet" href="/subcard2.css">
+        <link rel="stylesheet" href="/sidebar.css">
+        <link rel="stylesheet" href="/bird.css">
+
+        <script> 
+            $(function(){
+              $("#termsContent").load("/termscontent.html"); 
+            });
+            $(function(){
+              $("#ppContent").load("/ppcontent.html"); 
+            });
+            $(function(){
+                $("#loadContent").load("/loading.html")
+            })
+            $(function(){
+                $("#y").load("/loading.html")
+            })
+            $(function(){
+                $("#f").load("/faqcontent.html")
+            })
+            $(function(){
+                $("#dis").load("/disclaimer.html")
+            })
+            </script>
+        <style>
+        
+        .tfgreen {
+          background-color: lightgreen;
+          border-radius: 2px;
+          color: white;
+        }
+        
+        .tfred {
+          background-color: lightcoral;
+          border-radius: 2px;
+          color: white;
+        }
+        
+        .profit {
+          border-left: 7px solid blue;
+          border-radius: 5px 0px 0px 5px;
+        }
+        
+        .loss {
+          border-left: 7px solid red;
+          border-radius: 5px 0px 0px 5px;
+        }
+        .neu {
+        border-radius: 50px;
+        background: white;
+        box-shadow:  20px 20px 60px #bebebe,
+                     -20px -20px 60px #ffffff;
+        }
+        
+        .noselect {
+          -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+             -khtml-user-select: none; /* Konqueror HTML */
+               -moz-user-select: none; /* Old versions of Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                          supported by Chrome, Edge, Opera and Firefox */
+        }
+        
+            ::-webkit-scrollbar {
+          width: 5px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+          box-shadow: grey; 
+          border-radius: 5px;
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: grey; 
+          border-radius: 5px;
+          height:5px;
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: light-grey; 
+        }
+        
+        #top {
+            z-index: 10; /* make the header sit on top */
+            background: white; /* transparent background won't look right here */
+        }
+        body {
+          overflow-y: auto;
+          height: 100%;
+          /*padding-top: 5%; /* set this to your header height */
+        }
+        .list-group {
+          max-height: 90%;
+          overflow-y: scroll;
+        }
+        
+        .scroll {
+            max-height: 90%;
+            overflow-y: scroll;
+        }
+        #h{
+            font-size:30px;
+        }
+        
+        .list-group-item img{
+            height: 30%;
+            width: 30%;
+            border-radius: 5%;
+        }
+        #s {
+            overflow-x:auto;
+            overflow-y:hidden;
+            min-height:300px;
+        
+        }
+        
+        .card .g{
+            min-height: 300px;
+            min-width: 300px;
+        }
+
+        
+        #de {
+        
+            width:150px;
+        }
+        
+        .custom {
+        
+            float: left;
+        }
+        
+        .f {
+            font-size: 10px;
+        }
+        
+        .canvasjs-chart-toolbar {
+            left: 0 !important;
+            right: auto !important;    
+        }
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.circle
+    {
+    width:120px;
+    height:120px;
+    border-radius:120px;
+    font-size:20px;
+    text-align:center;
+    background:white;
+    border: 10px solid orange;
+    border-style: ridge;
+    }
+    .cnttxt {
+
+text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+}
+
+.donate {
+
+    border-radius: 7px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 5px 5px 5px rgb(104, 103, 103);
+
+}
+
+.w {
+    border-radius: 20px;
+}
+
+.timeframe {
+    width: 40px;
+    height: 40px;
+    background-color: #fcb127;
+    border-radius: 5px;
+    color: black;
+}
+
+.timefram {
+    width: 30px;
+    height: 30px;
+    background-color: #fcb127;
+    border-radius: 5px;
+    color: black;
+}
+
+.modal-dialog-full-width {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width:none !important;
+        border: 0px solid white;
+        border-radius: 0px;
+
+    }
+
+    .modal-content-full-width  {
+        height: auto !important;
+        min-height: 100% !important;
+        border: 0px solid white;
+        border-radius: 0px;
+         
+    }
+
+/* .list-group-item:hover {
+    background-color: lightgrey;
+}
+
+.d:nth-child(odd){
+  background:lightgrey
+} */
+.modal-header{
+    border-color: #ffffff00;
+}
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.button-link {
+	background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+input[type=text],input[type=password]{
+  -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  background-color: #fff; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+input[type=password]{
+  
+}
+button {
+	outline: none;
+}
+button:focus {
+	outline: none;
+}
+#icon1 {
+  display: inline-block;
+  background-color: #fcb127;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+button.button {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  border-radius: 5px; 
+  background-color: #3a57af; 
+  top: 0px;
+  position: relative;
+  border: none;
+}
+
+.modal-vert {
+    text-align: center;
+  
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.card-header {
+    border-bottom: none;
+    background-color: white;
+    border-radius: 10px !important;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 0px;
+}
+
+.mini-loader {
+    position: relative;
+    top: .7vh;
+    font-size: 12px;
+}
+
+.card-header:first-child {
+    border-radius: 10px;
+}
+
+.close {
+    text-shadow: none;
+    opacity: 1;
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+    box-shadow: none;
+}
+
+#icon {
+display: inline-block;
+background-color: #3a57af;
+-webkit-border-radius: 4px 0px 0px 4px; 
+-moz-border-radius: 4px 0px 0px 4px; 
+border-radius: 4px 0px 0px 4px;
+color: white;
+-webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+-moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+border: solid 0px #cbc9c9;
+}
+        </style>
+
+    </head>
+
+    <body>
+        <div id="y"></div>
+        <div class="wrapper">
+            <!-- Sidebar -->
+            <nav id="sidebar">
+        
+                
+                <i id="dismiss" class="fas fa-times"></i>
+                
+        
+                <div id="sidebarHead" class="sidebar-header" style="background-color: white">
+                    <h3>Account Settings</h3>
+                </div>
+                <div class="container">
+                    <div class="panel faq-table p-0 mt-2 mb-2">
+                        <div class="d-flex flex-column my-2" style="text-align: center;">
+                            <p class="p-0 m-0"><img src="/cloud-loading-2.svg" style="width: 40px;height: 40px;"/></p>
+                            <p class="p-0 m-0" style="color: black; font-weight: bold;">Full Name</p>
+                            <p class="p-0 m-0" style="color: black;font-size: 13px;">Login</p>
+                        </div>
+                    </div>
+                <div class="panel faq-table p-0 mt-3 mb-5">
+                <ul class="list-unstyled components" style="text-align: left !important;">
+                    <!-- <div class="pl-2 pr-2 pb-2">
+                    <div class="pricing-table pb-1 pt-1 d-flex justify-content-between bg-light">
+                        <span class="ml-5 pl-3">
+                        <img src="https://img.icons8.com/ios-glyphs/30/000000/sprout.png"/>
+                        </span>
+                        <p class="text-dark p-0 m-0 mr-5 pr-3"><img style="width: 20px;height: 20px;" src="https://img.icons8.com/ios-glyphs/30/000000/sprout.png"/> <strong> Donate</strong></p>
+                        
+                    </div>
+                    </div> -->
+                    <!-- <li>
+                        <div class="pt-2 pr-2 d-flex justify-content-between">
+                        <a href="#">MCHEL</a>
+                        <div class="custom-control custom-switch">
+                        
+                            <input mbsc-switch type="checkbox" checked>
+                        </div>
+                        <div class="pt-4 blob green"></div>
+                        </div>
+                        
+                    </li> -->
+                    <li>
+                        <a data-toggle="modal" data-target="#do"><i class="fas fa-seedling" style="color: #50C878;"></i> Donate</a>
+                    </li>
+                    <li>
+                        <a> <i class="fas fa-wallet" style="color: #954535;"></i><button class="pl-1" style="width: 85%;text-align: left;border: none;background-color: #ffffff00;" class="button-link" onclick = 'billing()' aria-expanded="false"> Manage Billing</button> <i id="b" style="float: right;" class="pt-1 fas fa-arrow-right"></i></a>
+                        <!-- <ul class="collapse list-unstyled" id="billingSubmenu">
+                            <li>
+                                <a href="#">Update Billing Information</a>
+                            </li>
+                            <li>
+                                <a href="#">Cancel Subscription</a>
+                            </li>
+                            <li>
+                                <a href="#">View Billing History</a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li style="color: #000;">
+                        <a href="#tradeSubmenu" data-toggle="modal" data-target="#upt"><i class="fas fa-database" style="color: #0047AB;"></i> Change Trading Account </a>
+                        <!-- <ul class="collapse list-unstyled" id="tradeSubmenu">
+                            <li>
+                                <a href="#">Update Trading Account</a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="#homeSubmenu" data-toggle="modal" data-target="#faq"><i class="fas fa-question-circle" style="color: #FFD700;"></i> FAQs </a>
+                        <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="mainfaq.html">Deposit & Withdraw</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li class="d-flex flex-row justify-content-between">
+                        <a><i class="fas fa-moon"></i> Dark Mode</a>
+                        <div class="custom-control custom-switch" style="top: 1.3vh">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1"></label>
+                          </div>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#abt"><i class="fas fa-info-circle" style="color: #5bc0de;"></i> About </a>
+                        
+                    </li>
+                    <li>
+                        <a style="font-weight: bold;font-size: 20px;color: red;text-align: center;">Log Out</a>
+                    </li>
+                   
+                    </ul>
+                </div>
+                </div>
+                
+            </nav>
+        
+            <!-- Page Content -->
+            <div id="container content">
+        
+               
+                
+                
+                
+                  <div class="container d-flex flex-row justify-content-between mb-3 mt-3">
+                      <div class="d-flex flex-column">
+                          <div id="eqt" class="pb-2" style="font-weight: bold;font-size: small;">Equity</div>
+                    <div id="e" class="d-flex flex-row">
+                        <h3 id="equity" style="font-weight: bold;">...</h3>
+                        <p class="pl-2 m-auto" style="color: #50C878;font-size: 12px;"><i class="fas fa-arrow-up"></i> $... (...%)</p>
+                    </div>
+                      </div>
+                  <!-- <div><h3 class="mb-auto">Equity</h3></div> -->
+                  <!-- <div class="blob green flex-align-center"></div> -->
+                  <div>
+                    <i id="sidebarCollapse" class="fas fa-align-right"></i>
+                
+                </div>
+                  </div>
+                
+                
+                <div id="chartContainer2" class="panel pricing-table container p-0" style="width:90vw;height: 40vh"></div>
+            
+        
+            
+               		
+              <div class="mt-5 mb-5 container d-flex flex-row justify-content-between">
+                      <div id="d1" class="pricing-table cnttxt timefram">D1</div>
+                      <div id="w1" class="pricing-table cnttxt timefram">1W</div>
+                      <div id="m1" class="pricing-table cnttxt timefram">1M</div>
+                      <div id="m3" class="pricing-table cnttxt timefram">3M</div>
+                      <div id="y1" class="pricing-table cnttxt timefram">1Y</div>
+                      <div id="y5" class="pricing-table cnttxt timefram" >5Y</div>      
+              </div>
+             
+        
+              <div class="container mt-5">
+              
+              
+                <div class="mt-3 mb-5 d-flex justify-content-center"><h2 id="ana" class="pb-1 pl-4 pr-4" style="border-bottom: 5px solid black;width: fit-content;"><i class="fas fa-chart-pie" style="color: #C41E3A;"></i> Analytics</h2></div>
+                <div class="row mx-auto">
+                <div class="pricing-table card container mb-3 col-md-5 p-0">
+                    <div class="card-header"><i class="fas fa-chart-line"></i> <strong>Winrate</strong></div>
+            
+                      <div class="card-body">
+                      <div id="wr" class="c100 p34 center">
+                        <span id="wrtxt" style="font-weight: bold;color: #307bbb;">34%</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                      </div>
+                    <!-- <div class="cnttxt circle"><h2><strong>10%</strong></h2></div> -->
+                  
+                  
+                </div>
+
+                <div class="pricing-table card container mb-3 col-md-5 p-0">
+                        <div class="card-header"><i class="fas fa-shield-alt"></i> <strong>Loss Recovered</strong></div>
+                      <div class="card-body">
+                        <div id="lr" class="c100 p34 center">
+                            <span id="lrtxt" style="font-weight: bold;color: #307bbb;">34%</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                        </div>
+                    
+                    
+                  </div>
+                </div>
+                <div class="row mx-auto">
+                  <div class="pricing-table card container mb-3 col-md-5 p-0">
+                    <div class="card-header"><i class="fas fa-dollar-sign"></i> <strong>Total Return</strong></div>
+                    
+                      
+                    <div class="card-body">
+                        <div id="tr" class="c100 p34 center">
+                            <span id="trtxt" style="font-weight: bold;color: #307bbb;">34%</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                        </div>
+                    
+                    
+                  </div>
+                
+                  <div class="pricing-table card container mb-3 col-md-5 p-0">
+                    
+                    
+                      <div class="card-header"><i class="fas fa-caret-down"></i> <strong>Max Drawdown</strong></div>
+                      
+                      <div class="card-body">
+                        <div id="md" class="c100 p34 center">
+                            <span id="mdtxt" style="font-weight: bold;color: #307bbb;">34%</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                        </div>
+                    
+                    
+                  </div>
+                </div>
+            </div>
+    
+            </div>
+            <!-- Dark Overlay element -->
+            <div class="overlay"></div>
+        </div>
+
+        <div class="modal" id="faq" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <div class="modal-header m-0 p-0 d-flex justify-content-between">
+                    <p id="fheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;"><i class="fas fa-question-circle" style="color: #FFD700;"></i> FAQs</p>
+                  <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                    <span><i class="fas fa-times"></i></span>
+                  </button>
+                </div>
+                <div id="pastq" onscroll="fScroll(this)" class="modal-body pt-0">
+                    <h1 class="mb-3" style="border-bottom: 5px solid black;"><i class="fas fa-question-circle" style="color: #FFD700;"></i> FAQs</h1>
+                        <div id="f">
+                        
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal" id="abt" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <div class="modal-header m-0 p-0 d-flex justify-content-between">
+                    <p id="aheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;"><i style="color: #5bc0de;" class="fas fa-info-circle"></i> About</p>
+                    <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                      <span><i class="fas fa-times"></i></span>
+                    </button>
+                  </div>
+                <div id="pastq" onscroll="aboutScroll(this)" class="modal-body pt-0">
+                    <h1 class="mb-4" style="border-bottom: 5px solid black;"><i style="color: #5bc0de;" class="fas fa-info-circle"></i> About</h1>
+                    <p style="color: #fcb127;font-weight: bold;">Support Us</p>
+            <ul class="list-group list-group-flush">
+                <li id="share" class="p-0 ml-3 list-group-item d-flex justify-content-between">
+                    <div class="modal-vert">
+                        <i class="fas fa-bullhorn" style="color: #DC143C;"></i>
+                        <p class="pl-2 pt-3">Share Icarus X</p>
+                    </div>
+                    <div class="pt-4" style="height: fit-content;">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </li>
+            </ul>
+
+            <p style="color: #fcb127;font-weight: bold;">Help</p>
+            <ul class="list-group list-group-flush">
+                <li id="feedback" class="p-0 ml-3 list-group-item d-flex justify-content-between">
+                    <div class="modal-vert">
+                        <i class="fas fa-comment-dots" style="color: #1982FC;"></i>
+                        <p class="pl-2 pt-3">Give Us Feedback</p>
+                    </div>
+                    <div class="pt-4" style="height: fit-content;">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </li>
+                <li id="csupport" class="p-0 ml-3 list-group-item d-flex justify-content-between">
+                    <div class="modal-vert">
+                        <i class="fas fa-envelope" style="color: #A7C7E7;"></i>
+                        <p class="pl-2 pt-3">Customer Support</p>
+                    </div>
+                    <div class="pt-4" style="height: fit-content;">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </li>
+            </ul>
+
+            <p style="color: #fcb127;font-weight: bold;">Follow Us</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex pt-0 pb-0">
+                    <div class="modal-vert">
+                        <i class="fab fa-facebook-square" style="font-size:25px; color: #3b5998;"></i>
+                        <p class="pl-2 pt-3">Facebook</p>
+                    </div>
+                </li>
+            </ul>
+
+            <p style="color: #fcb127;font-weight: bold;">Other</p>
+            <ul class="list-group list-group-flush">
+                <li data-toggle="modal" data-target="#pp" class="list-group-item d-flex justify-content-between p-0">
+                    <div class="modal-vert">
+                        <p class="pt-3">Privacy Policy</p>
+                    </div>
+                    <div class="pt-4" style="height: fit-content;">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </li>
+                <li data-toggle="modal" data-target="#te" class="list-group-item d-flex justify-content-between p-0">
+                    <div class="modal-vert">
+                        <p class="pt-3">Terms and Conditions</p>
+                    </div>
+                    <div class="pt-4" style="height: fit-content;">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </li>
+                <li data-toggle="modal" data-target="#disclaimer" class="list-group-item d-flex justify-content-between p-0">
+                    <div class="modal-vert">
+                        <p class="pt-3">Disclaimer Policy</p>
+                    </div>
+                    <div class="pt-4" style="height: fit-content;">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </li>
+            </ul>
+                    </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="te" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <div class="modal-header m-0 p-0 d-flex justify-content-between">
+                    <p id="termsheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;">Terms & Conditions</p>
+                    <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                      <span><i class="fas fa-times"></i></span>
+                    </button>
+                  </div>
+                <div id="termsContent" onscroll="termsScroll(this)" class="modal-body container pt-0" style="overflow-wrap: break-word;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="pp" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <div class="modal-header m-0 p-0 d-flex justify-content-between">
+                    <p id="ppheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;">Privacy Policy</p>
+                    <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                      <span><i class="fas fa-times"></i></span>
+                    </button>
+                  </div>
+                <div id="ppContent" onscroll="ppScroll(this)" class="modal-body container pt-0" style="overflow-wrap: break-word;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="load" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <div id="loadContent" class="modal-body">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="do" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <div class="modal-header m-0 p-0 d-flex justify-content-between">
+                    <p id="dheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;"><i class="fas fa-seedling" style="color: #50C878;"></i> Donate</p>
+                    <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                      <span><i class="fas fa-times"></i></span>
+                    </button>
+                  </div>
+                <div id="" onscroll="headerScroll(this)" class="modal-body container pt-0">
+                    <h1 class="mt-n2 mb-3" style="border-bottom: 5px solid black;">Initiative</h1>
+                    <!-- <div class="panel faq-table mb-5 mt-3" style="overflow-y: scroll;height: 70vh;"> -->
+                        <div class="donate-body">
+                        <p>With your help we can grow a charitable account to make annualized donations to schools and to communities in need.</p>
+                        </div>
+                        <h1 class="mb-3" style="border-bottom: 5px solid black;">Introduction</h1>
+                        <div class="donate-body">
+                        <p>In a world where the rich will continue to get richer, Icarus Investments feels morally obligated to manage and create an investment account for under-privileged and poorer communities. Our intentions are to donate profits on an annual basis to charities and schools that need it the most. Over the years, poorly funded schools have had to make budget cuts that cut out important curriculums. Quality education should not be about money and should be focused on the students. We hope to revitalize Arts and Music curriculums to bolster creativity, provide quality education resources and technology and create a vetting program for exceptional and inspiring teachers over the coming years. We believe that progress can be made with time and initiative from one generation to the next. If you believe that children in poorer communities deserve a better shot at success or helping to minimize our massive wealth gap, please support our project!</p>
+                        </div>
+                        <!-- </div> -->
+                    <h1 class="mb-3 mt-3" style="border-bottom: 5px solid black;">Donate</h1>
+                    <div class="panel pricing-table d-flex flex-column" style="height: fit-content;">
+                        <div class="d-flex flex-row justify-content-center mb-1">
+                            <input style="width: 100%;" type="number" name="amt" id="amount-input" placeholder="$0.00" required/>
+                        </div>
+                    <div class="mt-3 mb-3 p-0 container d-flex flex-row justify-content-between">
+                        <div id="do5" class="cnttxt timeframe">$5</div>
+                        <div id="do25" class="cnttxt timeframe">$25</div>
+                        <div id="do50" class="cnttxt timeframe">$50</div>
+                        <div id="do100" class="cnttxt timeframe">$100</div>
+                        <div id="do500" class="cnttxt timeframe">$500</div>      
+                    </div>
+                        <button id="donate-button" class="p-2 button text-center" style="font-size: 16px;">Donate <i class="fas fa-chevron-right pt-1" style="float: right;"></i></button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="disclaimer" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <div class="modal-header m-0 p-0 d-flex justify-content-between">
+                    <p id="disheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;">Disclaimer Policy</p>
+                  <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                    <span><i class="fas fa-times"></i></span>
+                  </button>
+                </div>
+                <div onscroll="disScroll(this)" class="modal-body pt-0">
+                    <div id="dis">
+                        
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal" id="upt" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <!-- <div class="modal-header m-0 p-0 mb-1 mt-n2">
+                  <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                    <span class="cnttxt mb-n3" aria-hidden="true"><img src="https://img.icons8.com/ios-glyphs/24/000000/back.png" class="mr-1 ml-1" style="height: 20px; width: 20px;"/><p style="line-height: 1em;font-size: 16px" class="m-0">Back</p></span>
+                  </button>
+                </div> -->
+                <div style="background-image: url('/clouds-anim.svg');" id="" class="modal-body container my-auto">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-end">  
+                          <div class="">
+                          <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                            <i class="fas fa-times"></i>
+                          </button>
+                          </div>
+                        
+                    </div>
+                    <div class="faq-table p-0 mb-3 mt-3 pl-2 pr-2 pt-1 pb-1" style="text-align: center;border-radius: 15px;">
+                        <h6 class="mx-auto pricing-price pl-3 pr-3 pb-1 pt-2" style="font-size: 20px !important;color: black; border-bottom: 5px solid black;">Connect to Brokerage Account</h6>
+                    </div>
+                <div class="panel faq-table d-flex flex-column">
+                
+                <div class="d-flex flex-row justify-content-center">
+                <label class="p-2 mb-1 ml-1 mt-1" id="icon" for="name"><i class="far fa-user"></i></label>
+                <input style="width: 100%;" type="text" name="login" id="accnumber" placeholder="Account No." required/>
+                </div>
+              </br>
+                <div class="d-flex flex-row justify-content-center">
+                <label class="p-2 ml-1 mt-1" id="icon" for="name"><i class="fas fa-key"></i></label>
+                <input style="width: 100%;" type="password" name="pass" id="pass" placeholder="Password" required/>
+              </div>
+              <div class="form-select mt-4 d-flex flex-row justify-content-center" style="width: 100%;">
+                <label class="p-2 ml-1 mt-1" id="icon" for="server"><i class="fas fa-database"></i></label>
+                <select style="width: 100%;" class="" name="server" id="server" required>
+                  <option value="0">Select server:</option>
+                  <option value="1">Tradersway-Live 2</option>
+                  <option value="2">IC-Markets</option>
+                </select>
+              </div>
+              <p style="color: red;" id="err"></p>
+                 <!-- <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p> -->
+                 <div class="d-flex justify-content-center">
+                 <button id="changeacc" class="button p-2 mt-4" style="width: 100%;">Change Account<i class="fas fa-chevron-right pt-1" style="float: right;"></i></button>
+                 </div>
+                 <p style="text-align: center;font-size: 12px;" class="pt-1">*We do not store any of your personal information.</p>
+                 <div class="d-flex justify-content-end pt-2" style="background-color: #ffffff;">
+                  <button data-toggle="modal" data-target="#alb" style="border: 0; background-color: rgba(0, 0, 0, 0.0);font-weight: bold;">Allowed Brokers?</button>
+                </div>
+                </div>
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="alb" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-full-width" role="document">
+              <div class="modal-content modal-content-full-width">
+                <div class="modal-header m-0 p-0 d-flex justify-content-between">
+                    <p id="bheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;">Allowed Brokers</p>
+                    <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                      <span><i class="fas fa-times"></i></span>
+                    </button>
+                  </div>
+                <div id="" onscroll="bScroll(this)" class="modal-body container pt-0">
+                    <h2 class="mt-n2 mb-3" style="border-bottom: 5px solid black;">Allowed Brokers</h2>
+                        <div class="broker-body panel faq-table mb-3">
+                            <h4><img src="/tradersway-transparent.png" style="width: 30px;height: 30px;"/> Trader'sway</h4>
+                            <p>"We provide our clients with the best conditions for trading, regardless of our clients’ level of experience or the size of their deposits. Each client is important to us, and we are proud to say that we can satisfy any requirement when it comes to accessing a given market. We offer a wide range of trading tools and conditions and we hope that every member who joins us can achieve success – whether a beginner who starts with a $10 deposit and learns how to trade with low risk, or a seasoned professional who operates directly on an interbank market with large assets and low floating spreads using our ECN platform." - Tradersway</p>
+                            <a class="btn btn-primary">Sign Up with Tradersway <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        <div class="broker-body panel faq-table mb-3">
+                            <h4><img src="/ICmarkets-logo.png" style="width: 30px;height: 30px;"/> IC Markets</h4>
+                            <p>"IC Markets has been created with traders in mind. Scalping, hedging, and automated trading are all allowed. Our Raw Spread account spreads start from 0.0 pips. We have flexible leverage options offering up to 1:500, and accept deposits in 10 major currencies." - IC Markets</p>
+                            <a class="btn btn-primary">Sign Up with IC Markets <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        <div class="broker-body panel faq-table">
+                            <p>*<img src="/tradersway-transparent.png" style="width: 17px;height: 17px;"/>Trader'sway & <img src="/ICmarkets-logo.png" style="width: 17px;height: 17px;"/> IC Markets are both highly trusted and regulated brokers. In addition, we do not store any of your personal.</p>
+                        </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+
+    <script type="text/javascript">
+
+        function headerScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('dheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('dheader').style.opacity = 1;
+            }
+
+        }
+
+        function ppScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('ppheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('ppheader').style.opacity = 1;
+            }
+
+        }
+
+        function termsScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('termsheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('termsheader').style.opacity = 1;
+            }
+
+        }
+
+        function aboutScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('aheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('aheader').style.opacity = 1;
+            }
+
+        }
+
+        function fScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('fheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('fheader').style.opacity = 1;
+            }
+
+        }
+
+        function bScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('bheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('bheader').style.opacity = 1;
+            }
+
+        }
+        function disScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('disheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('disheader').style.opacity = 1;
+            }
+
+        }
+        document.getElementById('y').style.display = 'none';
+        var da;
+        fetch('/app/getinfo').then((x)=>{
+            da = x.data;
+            console.log(da)
+        }).catch(()=>{
+
+        })
+
+        $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked") == true){
+                //#343a40
+                document.getElementsByTagName("body")[0].style.backgroundColor = '#343a40';
+                document.getElementById("eqt").style.color ="#ffffff";
+                document.getElementById("equity").style.color ="#ffffff";
+                document.getElementById("ana").style.color = "#ffffff";
+                document.getElementById("ana").style.borderBottom = "5px solid #ffffff";
+                document.getElementById("sidebarCollapse").style.color = "#ffffff";
+                document.getElementById("sidebar").style.backgroundColor = "#343a40";
+                document.getElementById("sidebarHead").style.backgroundColor = "#343a40";
+                document.getElementById("sidebarHead").style.color = "#ffffff";
+                document.getElementById("dismiss").style.color = "#ffffff";
+                document.getElementById("dismiss").style.backgroundColor = "#343a40";
+                const modalContent = document.querySelectorAll('.modal-content');
+
+                // Change the text of multiple elements with a loop
+                modalContent.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'background-color: #343a40; color: #ffffff')
+                });
+
+                const headers = document.querySelectorAll('.modal-body > h1');
+
+                headers.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'border-bottom: 5px solid white');
+                });
+
+                const abheaders = document.querySelectorAll('.modal-body > h2');
+
+                abheaders.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'border-bottom: 5px solid white');
+                });
+
+                const abh4headers = document.querySelectorAll('.broker-body > h4');
+
+                abh4headers.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const buttonClose = document.querySelectorAll('.close');
+
+                buttonClose.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: white');
+                });
+
+                const donateBody = document.querySelectorAll('.donate-body > p');
+
+                donateBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: white');
+                });
+
+                const aboutBody = document.querySelectorAll('.modal-body > ul > li');
+
+                aboutBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'background-color: #343a40');
+                });
+
+                const aboutBodyt = document.querySelectorAll('.modal-vert > p');
+
+                aboutBodyt.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: white');
+                });
+
+                const brokerBody = document.querySelectorAll('.broker-body > p');
+
+                brokerBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const termsBody = document.querySelectorAll('#termsContent > p');
+
+                termsBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: white');
+                });
+
+                const ppBody = document.querySelectorAll('#ppContent > p');
+
+                ppBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: white');
+                });
+
+                const disBody = document.querySelectorAll('#dis > p');
+
+                disBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: white');
+                });
+
+                document.getElementById('aheader').style.color = 'white';
+                document.getElementById('fheader').style.color = 'white';
+                document.getElementById('dheader').style.color = 'white';
+                document.getElementById('bheader').style.color = 'white';
+                document.getElementById('disheader').style.color = 'white';
+                document.getElementById('termsheader').style.color = 'white';
+                document.getElementById('ppheader').style.color = 'white';
+                console.log("Checkbox is checked.");
+            }
+            else if($(this).prop("checked") == false){
+                document.getElementsByTagName("body")[0].style.backgroundColor = '#ffffff';
+                document.getElementById("eqt").style.color ="#000";
+                document.getElementById("equity").style.color ="#000";
+                document.getElementById("ana").style.color = "#000";
+                document.getElementById("ana").style.borderBottom = "5px solid #000";
+                document.getElementById("sidebarCollapse").style.color = "#000";
+                document.getElementById("sidebar").style.backgroundColor = "#ffffff";
+                document.getElementById("sidebarHead").style.backgroundColor = "#ffffff";
+                document.getElementById("sidebarHead").style.color = "#000";
+                document.getElementById("dismiss").style.color = "#000";
+                document.getElementById("dismiss").style.backgroundColor = "#ffffff";
+
+                const modalContent= document.querySelectorAll('.modal-content');
+
+                modalContent.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'background-color: #ffffff; color: #000')
+                });
+
+                const headers = document.querySelectorAll('.modal-body > h1');
+
+                headers.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'border-bottom: 5px solid black');
+                });
+
+                const abheaders = document.querySelectorAll('.modal-body > h2');
+
+                abheaders.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'border-bottom: 5px solid black');
+                });
+
+                const abh4headers = document.querySelectorAll('.broker-body > h4');
+
+                abh4headers.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const buttonClose = document.querySelectorAll('.close');
+
+                buttonClose.forEach(element => {
+                    element.removeAttribute('style')
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const donateBody = document.querySelectorAll('.donate-body > p');
+
+                donateBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const brokerBody = document.querySelectorAll('.broker-body > p');
+
+                brokerBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const aboutBody = document.querySelectorAll('.modal-body > ul > li');
+
+                aboutBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'background-color: #ffffff');
+                });
+
+                const aboutBodyt = document.querySelectorAll('.modal-vert > p');
+
+                aboutBodyt.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const termsBody = document.querySelectorAll('#termsContent > p');
+
+                termsBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const ppBody = document.querySelectorAll('#ppContent > p');
+
+                ppBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                const disBody = document.querySelectorAll('#dis > p');
+
+                disBody.forEach(element => {
+                    element.removeAttribute('style');
+                    element.setAttribute('style', 'color: black');
+                });
+
+                document.getElementById('aheader').style.color = 'black';
+                document.getElementById('fheader').style.color = 'black';
+                document.getElementById('dheader').style.color = 'black';
+                document.getElementById('bheader').style.color = 'black';
+                document.getElementById('disheader').style.color = 'black';
+                document.getElementById('termsheader').style.color = 'black';
+                document.getElementById('ppheader').style.color = 'black';
+                console.log("Checkbox is unchecked.");
+            }
+        });
+
+        $("#share").on("click", function(){
+                if (navigator.share) {
+        navigator.share({
+          title: 'Icarus Investments',
+          url: ' '
+        }).then(() => {
+          return;
+        })
+        .catch(() => {return console.error});
+      } else {
+      }
+      //console.log($(this).data("id")); 
+        });
+
+        $(function () {
+      $('#feedback').click(function (event) {
+        var email = 'sample@gmail.com';
+        var subject = 'Feedback';
+        var emailBody = '';
+        var attach = 'path';
+        document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
+      });
+    });
+
+    $(function () {
+      $('#csupport').click(function (event) {
+        var email = 'sample@gmail.com';
+        var subject = 'Customer Support';
+        var emailBody = '';
+        var attach = 'path';
+        document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
+      });
+    });
+    var ca = document.getElementById("changeacc");
+
+    ca.addEventListener('click', function(e) {
+          e.preventDefault();
+            document.getElementById("y").style.display = 'block';
+
+            var l = document.getElementById('accnumber').value;
+            var p = document.getElementById('pass').value;
+            var s = document.getElementById('server').value;
+
+            return fetch("/createaccount", {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({login: l, password: p, server: s}),
+            }).then(()=>{
+                document.getElementById("y").style.display = 'none';
+                document.getElementById("changeacc").style.backgroundColor = "";
+            }).catch(()=>{
+                document.getElementById('err').innerText = "Failed to connect. Please try again";
+            })
+      })
+    
+    var donationbutton = document.getElementById('donate-button');
+      var amount = document.getElementById('amount-input');
+      var donation5 = document.getElementById('do5');
+      var donation25 = document.getElementById('do25');
+      var donation50 = document.getElementById('do50');
+      var donation100 = document.getElementById('do100');
+      var donation500 = document.getElementById('do500');
+
+      donation5.addEventListener('click', function(e) {
+          e.preventDefault();
+          amount.value = 5;
+
+      })
+      donation25.addEventListener('click', function(e) {
+          e.preventDefault();
+          amount.value = 25;
+
+      })
+      donation50.addEventListener('click', function(e) {
+          e.preventDefault();
+          amount.value = 50;
+
+      })
+      donation100.addEventListener('click', function(e) {
+          e.preventDefault();
+          amount.value = 100;
+
+      })
+      donation500.addEventListener('click', function(e) {
+          e.preventDefault();
+          amount.value = 500;
+
+      })
+      donationbutton.addEventListener('click', function(e) {
+        e.preventDefault();
+        fetch('/create-donation', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            amount: amount.value
+          }),
+        })
+        .then((response) => response.json())
+        .then((session) => {
+          stripe.redirectToCheckout({
+            sessionId: session.id
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+
+function money_round(num) {
+    return Math.ceil(num * 100) / 100;
+}
+    
+        function billing(){
+            $('#b').removeClass('fas');
+            $('#b').removeClass('fa-arrow-right');
+            $('#b').addClass("spinner-border");
+            $('#b').addClass("spinner-border-sm");
+            $('#b').addClass("mini-loader");
+            fetch('/create-customer-portal')
+        }
+
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+    
+            $('#dismiss, .overlay').on('click', function () {
+                // hide sidebar
+                $('#sidebar').removeClass('active');
+                // hide overlay
+                $('.overlay').removeClass('active');
+            });
+    
+            $('#sidebarCollapse').on('click', function () {
+                // open sidebar
+                $('#sidebar').addClass('active');
+                // fade in the overlay
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+
+        var chartx = new CanvasJS.Chart("chartContainer2",
+    {
+    animationEnabled: true,
+  	height: screen.height * .4,
+    toolTip:{
+        enabled: true
+      },
+    axisX:{
+       gridThickness: 0,
+       lineThickness: 0,
+       tickThickness: 0,
+       minimum: new Date(2012, 00, 1),
+	    maximum: new Date(2012, 11, 1),
+        valueFormatString: "MMM YY",
+        labelFormatter: function(e){
+				return  "" ;
+			}
+      },
+      axisY:{
+       gridThickness: 0,
+       lineThickness: 0,
+       tickThickness: 0,
+       labelFormatter: function(e){
+				return  "" ;
+			}
+      },
+       data: [
+           {
+            type: "area", 
+        dataPoints: [
+        { x: new Date(2012, 00, 1), y: 450 },
+        { x: new Date(2012, 01, 1), y: 414 },
+        { x: new Date(2012, 02, 1), y: 520 },
+        { x: new Date(2012, 03, 1), y: 460 },
+        { x: new Date(2012, 04, 1), y: 450 },
+        { x: new Date(2012, 05, 1), y: 500 },
+        { x: new Date(2012, 06, 1), y: 480 },
+        { x: new Date(2012, 07, 1), y: 480 },
+        { x: new Date(2012, 08, 1), y: 410 },
+        { x: new Date(2012, 09, 1), y: 500 },
+        { x: new Date(2012, 10, 1), y: 480 },
+        { x: new Date(2012, 11, 1), y: 510 }
+        ]
+           }
+      ]
+    });
+
+    var eq;
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+
+    if(da.eqd1.length == 0){
+        
+        eq = money_round(da.accInfo.equity);
+        document.getElementById("equity").innerHTML = `$${eq}`;
+        chartx.options.axisX.minimum = new Date();
+        chartx.options.axisX.maximum = new Date(2022,11,1);
+        chartx.options.data[0].dataPoints = [{x: new Date(), y: eq}, {x: new Date(2022,11,1), y: eq}]
+        chartx.render();
+    
+    }
+    
+    
+
+        
+});
+var wrp = 0;
+var lrp = 0;
+var trp = 0;
+var mdp = 0;
+
+document.getElementById("d1").addEventListener("click", () =>{
+
+if(da.eqd1.length == 0){
+    var today = new Date();
+    chartx.options.axisX.minimum = new Date()
+    chartx.options.axisX.maximum = new Date().setDate(new Date().getDate() + 1);
+    chartx.options.data[0].dataPoints = [{x: new Date(), y: eq}, {x: new Date().setDate(new Date().getDate() + 1), y: eq}]
+    chartx.render();
+    $("#wr").removeClass("p34");
+    $("#wr").addClass("p0");
+    document.getElementById("wrtxt").innerText = "0%"
+    $("#lr").removeClass("p34");
+    $("#lr").addClass("p0");
+    document.getElementById("lrtxt").innerText = "0%"
+    $("#tr").removeClass("p34");
+    $("#tr").addClass("p0");
+    document.getElementById("trtxt").innerText = "0%"
+    $("#md").removeClass("p34");
+    $("#md").addClass("p0");
+    document.getElementById("mdtxt").innerText = "0%"
+    wrp = 0;
+    lrp = 0;
+    trp = 0;
+    mdp = 0;
+    
+} else {
+    var today = new Date();
+    chartx.options.axisX.minimum = today.setDate(today.getDate() - 1);
+    chartx.options.axisX.maximum = today;
+    chartx.options.data[0].dataPoints = da.eqd1;
+    chartx.render();
+    $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass(`p${da.data.d1wr[da.data.d1wr.length -1]}`);
+    document.getElementById("wrtxt").innerText = `${da.data.d1wr[da.data.d1wr.length -1]}%`
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass(`p${da.data.d1lr[da.data.d1lr.length -1]}`);
+    document.getElementById("lrtxt").innerText = `${da.data.d1lr[da.data.d1lr.length -1]}%`
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass(`p${da.data.d1tr[da.data.d1tr.length -1]}`);
+    document.getElementById("trtxt").innerText = `${da.data.d1tr[da.data.d1tr.length -1]}%`
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass(`p${da.data.md}`);
+    document.getElementById("mdtxt").innerText = `${da.data.md}%`
+    wrp = da.data.d1wr[da.data.d1wr.length -1];
+    lrp = da.data.d1lr[da.data.d1lr.length -1];
+    trp = da.data.d1tr[da.data.d1tr.length -1];
+    mdp = da.data.md;
+}
+
+});
+
+document.getElementById("w1").addEventListener("click", () =>{
+
+if(da.eqw1.length == 0){
+    var today = new Date()
+        chartx.options.axisX.minimum = new Date(today.setDate(today.getDate() - 7));
+        chartx.options.axisX.maximum = new Date();
+        chartx.options.data[0].dataPoints = [{x: new Date(new Date().setDate(new Date().getDate()-7)), y: eq}, {x: new Date(), y: eq}]
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass("p0");
+    document.getElementById("wrtxt").innerText = "0%"
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass("p0");
+    document.getElementById("lrtxt").innerText = "0%"
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass("p0");
+    document.getElementById("trtxt").innerText = "0%"
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass("p0");
+    document.getElementById("mdtxt").innerText = "0%"
+    wrp = 0;
+    lrp = 0;
+    trp = 0;
+    mdp = 0;
+    
+} else {
+    var today = new Date();
+        chartx.options.axisX.minimum = new Date(today.setDate(today.getDate() - 7));
+        chartx.options.axisX.maximum = new Date();
+        chartx.options.data[0].dataPoints = da.eqw1;
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass(`p${da.data.w1wr[da.data.w1wr.length -1]}`);
+    document.getElementById("wrtxt").innerText = `${da.data.w1wr[da.data.w1wr.length -1]}%`
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass(`p${da.data.w1lr[da.data.w1lr.length -1]}`);
+    document.getElementById("lrtxt").innerText = `${da.data.w1lr[da.data.w1lr.length -1]}%`
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass(`p${da.data.w1tr[da.data.w1tr.length -1]}`);
+    document.getElementById("trtxt").innerText = `${da.data.w1tr[da.data.w1tr.length -1]}%`
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass(`p${da.data.md}`);
+    document.getElementById("mdtxt").innerText = `${da.data.md}%`
+    wrp = da.data.w1wr[da.data.w1wr.length -1];
+    lrp = da.data.w1lr[da.data.w1lr.length -1];
+    trp = da.data.w1tr[da.data.w1tr.length -1];
+    mdp = da.data.md;
+
+}
+
+});
+
+document.getElementById("m1").addEventListener("click", () =>{
+
+if(da.eqm1.length == 0){
+    var today = new Date();
+        chartx.options.axisX.minimum = new Date(today.setDate(today.getDate() - 30));
+        chartx.options.axisX.maximum = new Date();
+        chartx.options.data[0].dataPoints = [{"x": new Date(new Date().setDate(new Date().getDate() - 30)), "y": eq}, {x: new Date(), y: eq}]
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass("p0");
+    document.getElementById("wrtxt").innerText = "0%"
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass("p0");
+    document.getElementById("lrtxt").innerText = "0%"
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass("p0");
+    document.getElementById("trtxt").innerText = "0%"
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass("p0");
+    document.getElementById("mdtxt").innerText = "0%"
+    wrp = 0;
+    lrp = 0;
+    trp = 0;
+    mdp = 0;
+    
+} else {
+    var today = new Date();
+        chartx.options.axisX.minimum = da.eqm1[0].x;
+        chartx.options.axisX.maximum = da.eqm1[da.eqm1.length - 1].x;
+        chartx.options.data[0].dataPoints = da.eqm1;
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass(`p${da.data.m1wr[da.data.m1wr.length -1]}`);
+    document.getElementById("wrtxt").innerText = `${da.data.m1wr[da.data.m1wr.length -1]}%`
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass(`p${da.data.m1lr[da.data.m1lr.length -1]}`);
+    document.getElementById("lrtxt").innerText = `${da.data.m1lr[da.data.m1lr.length -1]}%`
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass(`p${da.data.m1tr[da.data.m1tr.length -1]}`);
+    document.getElementById("trtxt").innerText = `${da.data.m1tr[da.data.m1tr.length -1]}%`
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass(`p${da.data.md}`);
+    document.getElementById("mdtxt").innerText = `${da.data.md}%`
+    wrp = da.data.m1wr[da.data.m1wr.length -1];
+    lrp = da.data.m1lr[da.data.m1lr.length -1];
+    trp = da.data.m1tr[da.data.m1tr.length -1];
+    mdp = da.data.md;
+
+}
+
+});
+
+document.getElementById("m3").addEventListener("click", () =>{
+
+if(da.eqm3.length == 0){
+    var today = new Date();
+        chartx.options.axisX.minimum = new Date(today.setDate(today.getDate() - 90));
+        chartx.options.axisX.maximum = new Date();
+        chartx.options.data[0].dataPoints = [{x: new Date(new Date().setDate(new Date().getDate() - 90)), y: eq}, {x: new Date(), y: eq}]
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass("p0");
+    document.getElementById("wrtxt").innerText = "0%"
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass("p0");
+    document.getElementById("lrtxt").innerText = "0%"
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass("p0");
+    document.getElementById("trtxt").innerText = "0%"
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass("p0");
+    document.getElementById("mdtxt").innerText = "0%"
+    wrp = 0;
+    lrp = 0;
+    trp = 0;
+    mdp = 0;
+    
+} else {
+    var today = new Date();
+        chartx.options.axisX.minimum = da.eqm3[0].x;
+        chartx.options.axisX.maximum = da.eqm3[da.eqm3.length - 1].x;
+        chartx.options.data[0].dataPoints = da.eqm3;
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass(`p${da.data.m3wr[da.data.m3wr.length -1]}`);
+    document.getElementById("wrtxt").innerText = `${da.data.m3wr[da.data.m3wr.length -1]}%`
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass(`p${da.data.m3lr[da.data.m3lr.length -1]}`);
+    document.getElementById("lrtxt").innerText = `${da.data.m3lr[da.data.m3lr.length -1]}%`
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass(`p${da.data.m3tr[da.data.m3tr.length -1]}`);
+    document.getElementById("trtxt").innerText = `${da.data.m3tr[da.data.m3tr.length -1]}%`
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass(`p${da.data.md}`);
+    document.getElementById("mdtxt").innerText = `${da.data.md}%`
+    wrp = da.data.m3wr[da.data.m3wr.length -1];
+    lrp = da.data.m3lr[da.data.m3lr.length -1];
+    trp = da.data.m3tr[da.data.m3tr.length -1];
+    mdp = da.data.md;
+
+}
+
+});
+
+document.getElementById("y1").addEventListener("click", () =>{
+
+if(da.eqy1.length == 0){
+    var today = new Date();
+        chartx.options.axisX.minimum = new Date(today.setDate(today.getDate() - 365));
+        chartx.options.axisX.maximum = new Date();
+        chartx.options.data[0].dataPoints = [{x: new Date(today.setDate(today.getDate() - 365)), y: eq}, {x: today, y: eq}]
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass("p0");
+    document.getElementById("wrtxt").innerText = "0%"
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass("p0");
+    document.getElementById("lrtxt").innerText = "0%"
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass("p0");
+    document.getElementById("trtxt").innerText = "0%"
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass("p0");
+    document.getElementById("mdtxt").innerText = "0%"
+    wrp = 0;
+    lrp = 0;
+    trp = 0;
+    mdp = 0;
+    
+} else {
+    var today = new Date();
+        chartx.options.axisX.minimum = da.eqy1[0].x//new Date(today.setDate(today.getDate() - 365));
+        chartx.options.axisX.maximum = da.eqy1[da.eqy1.length - 1].x;
+        chartx.options.data[0].dataPoints = da.eqy1;
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass(`p${da.data.y1wr[da.data.y1wr.length -1]}`);
+    document.getElementById("wrtxt").innerText = `${da.data.y1wr[da.data.y1wr.length -1]}%`
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass(`p${da.data.y1lr[da.data.y1lr.length -1]}`);
+    document.getElementById("lrtxt").innerText = `${da.data.y1lr[da.data.y1lr.length -1]}%`
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass(`p${da.data.y1tr[da.data.y1tr.length -1]}`);
+    document.getElementById("trtxt").innerText = `${da.data.y1tr[da.data.y1tr.length -1]}%`
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass(`p${da.data.md}`);
+    document.getElementById("mdtxt").innerText = `${da.data.md}%`
+    wrp = da.data.y1wr[da.data.y1wr.length -1];
+    lrp = da.data.y1lr[da.data.y1lr.length -1];
+    trp = da.data.y1tr[da.data.y1tr.length -1];
+    mdp = da.data.md;
+
+}
+
+});
+
+document.getElementById("y5").addEventListener("click", () =>{
+
+if(da.eqy5.length == 0){
+        var today = new Date();
+        chartx.options.axisX.minimum = new Date(today.setDate(today.getDate() - 365 * 5));
+        chartx.options.axisX.maximum = new Date();
+        chartx.options.data[0].dataPoints = [{x: new Date(new Date().setDate(new Date().getDate() - 365 * 5)), y: eq}, {x: new Date(), y: eq}]
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass("p0");
+    document.getElementById("wrtxt").innerText = "0%"
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass("p0");
+    document.getElementById("lrtxt").innerText = "0%"
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass("p0");
+    document.getElementById("trtxt").innerText = "0%"
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass("p0");
+    document.getElementById("mdtxt").innerText = "0%"
+    wrp = 0;
+    lrp = 0;
+    trp = 0;
+    mdp = 0;
+
+} else {
+    var today = new Date();
+        chartx.options.axisX.minimum = da.eqy5[0].x;
+        chartx.options.axisX.maximum = da.eqy5[da.eqy5.length - 1].x;
+        chartx.options.data[0].dataPoints = da.eqy5;
+        chartx.render();
+        $("#wr").removeClass(`p${wrp}`);
+    $("#wr").addClass(`p${da.data.y5wr[da.data.y5wr.length -1]}`);
+    document.getElementById("wrtxt").innerText = `${da.data.y5wr[da.data.y5wr.length -1]}%`
+    $("#lr").removeClass(`p${lrp}`);
+    $("#lr").addClass(`p${da.data.y5lr[da.data.y5lr.length -1]}`);
+    document.getElementById("lrtxt").innerText = `${da.data.y5lr[da.data.y5lr.length -1]}%`
+    $("#tr").removeClass(`p${trp}`);
+    $("#tr").addClass(`p${da.data.y5tr[da.data.y5tr.length -1]}`);
+    document.getElementById("trtxt").innerText = `${da.data.y5tr[da.data.y5tr.length -1]}%`
+    $("#md").removeClass(`p${mdp}`);
+    $("#md").addClass(`p${da.data.md}`);
+    document.getElementById("mdtxt").innerText = `${da.data.md}%`
+    wrp = da.data.y5wr[da.data.y5wr.length -1];
+    lrp = da.data.y5lr[da.data.y5lr.length -1];
+    trp = da.data.y5tr[da.data.y5tr.length -1];
+    mdp = da.data.md;
+
+}
+
+});
+    
+
+    
+    </script>
+    </body>
+
+</html>

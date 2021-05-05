@@ -1,0 +1,297 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/mainlogin.css">
+<link rel="stylesheet" href="/addapp.css">
+<script src="https://kit.fontawesome.com/83a5399452.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/themes/splide-skyblue.min.css">
+<link rel="stylesheet" href="/bird.css">
+<link rel="stylesheet" href="/loading.css">
+<link rel="stylesheet" href="/subcard2.css">
+<script>
+  $(function(){
+    $("#y").load("/loading.html")
+  })
+</script>
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-image: url('/clouds-anim.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+fieldset, img {border:0}
+
+ol, ul, li {list-style:none}
+
+:focus {outline:none}
+
+body,
+input,
+textarea,
+select {
+-webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+-moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+background-color: #fff; 
+-webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+-moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+border: solid 0px #cbc9c9;
+}
+
+p {
+font-size: 12px;
+display: inline-block;
+}
+h1 {
+font-size: 32px;
+font-weight: 300;
+color: #4c4c4c;
+text-align: center;
+}
+
+html{
+background-color: #ffffff;
+}
+
+input[type=radio]:checked + label:after {
+opacity: 1;
+}
+
+input[type=text],input[type=password]{
+-webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+-moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+background-color: #fff; 
+-webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+-moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+border: solid 0px #cbc9c9;
+}
+
+#icon {
+display: inline-block;
+background-color: #3a57af;
+-webkit-border-radius: 4px 0px 0px 4px; 
+-moz-border-radius: 4px 0px 0px 4px; 
+border-radius: 4px 0px 0px 4px;
+color: white;
+-webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+-moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+border: solid 0px #cbc9c9;
+}
+
+button.button {
+font-size: 14px;
+font-weight: 600;
+color: white;
+display: inline-block;
+float: right;
+text-decoration: none;
+-webkit-border-radius: 5px; 
+-moz-border-radius: 5px; 
+border-radius: 5px; 
+background-color: #3a57af; 
+border: none;
+transition: all 0.1s linear 0s; 
+top: 0px;
+position: relative;
+}
+
+.box {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.panel {
+background-color: #fff;
+border-radius: 10px;
+padding: 15px 25px;
+width: 100%;
+z-index: 10;
+}
+
+.pricing-table {
+box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+display: flex;
+flex-direction: column;
+}
+
+.modal-dialog-full-width {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width:none !important;
+        border: 0px solid white;
+        border-radius: 0px;
+
+    }
+
+    .modal-content-full-width  {
+        height: auto !important;
+        min-height: 100% !important;
+        border: 0px solid white;
+        border-radius: 0px;
+         
+    }
+    .modal-content {
+    border: none;
+    border-radius: 0px;
+}
+.close {
+    text-shadow: none;
+    opacity: 1;
+}
+.modal-header {
+    border-color: #ffffff00;
+}
+.modal-dialog {
+    overflow-y: initial !important
+}
+.modal-body {
+    height: 80vh;
+    overflow-y: auto;
+}
+        </style>
+    </head>
+
+    <body>
+      <div id="y" class="container" style="display: none;z-index: 10000000;"></div>
+      <div style="width: 100vw;height: fit-content;background-image: url('/clouds-anim.svg');z-index: 7000;" class="box container">
+        <div class="d-flex flex-column my-auto" style="">
+          <div class="mb-1 mx-auto">
+            <img style="width: 200px;height: 150px;" src="/Icarus_Investments_Logo_Final.png"/>
+            </div>
+          <div class="faq-table p-0 mb-3 mt-3 pl-2 pr-2 pt-1 pb-1" style="text-align: center;border-radius: 15px;">
+            <h6 class="mx-auto pricing-price pl-3 pr-3 pb-1 pt-2" style="font-size: 20px !important;color: black; border-bottom: 5px solid black;">Connect to Brokerage Account</h6>
+        </div>
+  <div class="panel faq-table d-flex flex-column" style="">
+  <div class="d-flex flex-row justify-content-center">
+  <label class="p-2 mb-1 ml-1 mt-1" id="icon" for="name"><i class="far fa-user"></i></label>
+  <input style="width: 100%;text-align: left !important;" type="text" name="accnumber" id="accnumber" placeholder="Account No." required/>
+  </div>
+</br>
+  <div class="d-flex flex-row justify-content-center">
+  <label class="p-2 ml-1 mt-1" id="icon" for="name"><i class="fas fa-key"></i></label>
+  <input style="width: 100%;text-align: left !important;" type="password" name="pass" id="pass" placeholder="Password" required/>
+</div>
+<div class="d-flex flex-row justify-content-center mt-3">
+  <label class="p-2 ml-1 mt-1" id="icon" for="server"><i class="fas fa-database"></i></label>
+  <select class="" name="server" id="server" style="font-size: 12px !important;width: 100%;" required>
+    <option value="0">Select server:</option>
+    <option value="1">Tradersway-Live 2</option>
+    <option value="2">IC-Markets</option>
+  </select>
+</div>
+<p id="err" class="pt-1" style="text-align: center;color: red;"></p>
+   <!-- <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p> -->
+   <div class="d-flex justify-content-center">
+   <button id="connect" class="button p-2" style="text-align: center;width: 100%;">Connect <i class="fas fa-chevron-right pt-1" style="float: right;"></i></button>
+   </div>
+   <p style="text-align: center;" class="pt-1">*We do not store any of your personal information.</p>
+   <div class="d-flex justify-content-end pt-2" style="background-color: #ffffff;">
+    <button data-toggle="modal" data-target="#b" style="border: 0; background-color: rgba(0, 0, 0, 0.0);font-weight: bold;">Allowed Brokers?</button>
+  </div>
+  </div>
+  
+</div>
+</div>
+
+                  <!-- Modal -->
+                  <div class="modal" id="b" tabindex="-1" role="dialog" aria-labelledby="past" aria-hidden="true" style="z-index: 100000000;">
+                    <div class="modal-dialog modal-dialog-full-width" role="document">
+                      <div class="modal-content modal-content-full-width">
+                        <div class="modal-header m-0 p-0 d-flex justify-content-between">
+                            <p id="bheader" class="pl-4 pt-3" style="opacity: 0;font-weight: bold;">Allowed Brokers</p>
+                            <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                              <span><i class="fas fa-times"></i></span>
+                            </button>
+                          </div>
+                        <div id="" onscroll="bScroll(this)" class="modal-body container pt-0">
+                            <h2 class="mt-n2 mb-3" style="border-bottom: 5px solid black;">Allowed Brokers</h2>
+                                <div class="broker-body panel faq-table mb-3">
+                                    <h4><img src="/tradersway-transparent.png" style="width: 30px;height: 30px;"/> Trader'sway</h4>
+                                    <p>"We provide our clients with the best conditions for trading, regardless of our clients’ level of experience or the size of their deposits. Each client is important to us, and we are proud to say that we can satisfy any requirement when it comes to accessing a given market. We offer a wide range of trading tools and conditions and we hope that every member who joins us can achieve success – whether a beginner who starts with a $10 deposit and learns how to trade with low risk, or a seasoned professional who operates directly on an interbank market with large assets and low floating spreads using our ECN platform." - Tradersway</p>
+                                    <a class="btn btn-primary">Sign Up with Tradersway <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                                <div class="broker-body panel faq-table mb-3">
+                                    <h4><img src="/ICmarkets-logo.png" style="width: 30px;height: 30px;"/> IC Markets</h4>
+                                    <p>"IC Markets has been created with traders in mind. Scalping, hedging, and automated trading are all allowed. Our Raw Spread account spreads start from 0.0 pips. We have flexible leverage options offering up to 1:500, and accept deposits in 10 major currencies." - IC Markets</p>
+                                    <a class="btn btn-primary">Sign Up with IC Markets <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                                <div class="broker-body panel faq-table">
+                                    <p>*<img src="/tradersway-transparent.png" style="width: 17px;height: 17px;"/>Trader'sway & <img src="/ICmarkets-logo.png" style="width: 17px;height: 17px;"/> IC Markets are both highly trusted and regulated brokers. In addition, we do not store any of your personal.</p>
+                                </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <script>
+                            function bScroll(x){
+            if(x.scrollTop <= 40){
+                document.getElementById('bheader').style.opacity = 0.025 * x.scrollTop;
+            } else {
+                document.getElementById('bheader').style.opacity = 1;
+            }
+
+        }
+                    function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
+                    var ca = document.getElementById("connect");
+
+      ca.addEventListener('click', function(e) {
+        e.preventDefault();
+        //document.getElementById("y").style.display = 'block';
+        document.getElementById('connect').innerHTML = '<div class="spinner-border text-warning" role="status"></div>'
+        var l = document.getElementById('accnumber').value;
+        var p = document.getElementById('pass').value;
+        var s = document.getElementById('server').value;
+
+        return fetch("/createaccount", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({login: l, password: p, server: s}),
+        }).then(handleErrors)
+        .then(()=>{
+            //document.getElementById("y").style.display = 'none';
+            $('#connect').css("background-color", "#228b22");
+            document.getElementById('connect').innerHTML = '<i class="fas fa-check"></i>'
+        }).catch((err)=>{
+            //document.getElementById("y").style.display = 'none';
+            document.getElementById('err').innerHTML = "<i class='fas fa-times'></i> Failed to connect. Please try again";
+            $('#connect').css("background-color", "#dc143c");
+            document.getElementById('connect').innerHTML = '<i class="fas fa-times"></i>'
+            setTimeout(function() {
+              $('#connect').css("background-color", "#3a57af");
+            document.getElementById('connect').innerHTML = 'Connect'
+             }, 3000);
+        })
+  })
+
+
+
+                  </script> 
+    </body>
+
+
+</html>

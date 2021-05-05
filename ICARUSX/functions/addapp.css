@@ -1,0 +1,25 @@
+.bubble {
+	
+	background: ivory;
+	display: block;
+	
+	border-radius: 20px;
+	
+	font-size: 20px;
+    text-align: center;
+   
+    z-index: 100;
+
+}
+
+.overlay {
+	height: 100vw;
+	width: 100vw;
+	
+    background: black;
+    
+	display: block;
+    position: absolute;
+    z-index: 99;
+
+}
