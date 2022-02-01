@@ -1,0 +1,378 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/mainlogin.css">
+		<link rel="stylesheet" href="/addapp.css">
+		<script src="https://kit.fontawesome.com/83a5399452.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/themes/splide-skyblue.min.css">
+		<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <link rel="stylesheet" href="/intlTelInput.min.css">
+    <script src="/intlTelInput.min.js"></script>
+    <script src="/utils.js"></script>
+		<style>
+      .splide {
+        visibility: visible;
+      }
+      button {
+	outline: none;
+}
+button:focus {
+	outline: none;
+}
+.iti { width: 100%; }
+.iti__flag {background-image: url("/flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .iti__flag {background-image: url("/flags@2x.png");}
+}
+
+fieldset, img {border:0}
+
+ol, ul, li {list-style:none}
+
+:focus {outline:none}
+
+body,
+input,
+textarea,
+select {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #4c4c4c;
+}
+
+p {
+  font-size: 12px;
+  display: inline-block;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #4c4c4c;
+  text-align: center;
+}
+
+html{
+  background-color: #ffffff;
+}
+
+
+input[type=radio] {
+  visibility: hidden;
+}
+
+input[type=radio]:checked + label:after {
+	opacity: 1;
+}
+
+hr{
+  color: #a9a9a9;
+  opacity: 0.3;
+}
+
+input[type=text],input[type=password]{
+  -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  background-color: #fff; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+input[type=number] {
+
+width: 25px;
+height: 40px;
+border: none;
+font-size: 20px;
+-webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+-moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+background-color: #fff; 
+-webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+-moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+text-align: center;
+}
+input[type=number].inputnumber::-webkit-inner-spin-button,
+input[type=number].inputnumber::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+button {
+	outline: none;
+}
+button:focus {
+	outline: none;
+}
+#icon1 {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+#icon2 {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+#icon3 {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+#icon4 {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+#icon {
+  display: inline-block;
+  background-color: #3a57af;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+button.button {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  border-radius: 5px; 
+  background-color: #3a57af; 
+  border: none;
+  transition: all 0.1s linear 0s; 
+  top: 0px;
+  position: relative;
+}
+
+.box {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel {
+    background-color: #fff;
+    border-radius: 10px;
+	padding: 15px 25px;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  .pricing-table {
+    box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-price {
+    color: #016FF9;
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+		</style>
+    </head>
+
+    <body>
+		
+		<div class="splide" id="splide">
+			<div class="splide__track">
+			  <ul class="splide__list">
+	
+				<li class="splide__slide">
+					<div style="width: 100vw;height: 100vh;background-image: url('/clouds-anim.svg');background-size: 100%;" class="box container">
+            <div class="d-flex justify-content-end" style="position: absolute;top: 25px;right: 30px;">
+              <a href="/app/signup" style="border: 0; background-color: rgba(0, 0, 0, 0.0);color: black;font-weight: bold;">Sign Up</a>
+            </div>
+            <div class="d-flex flex-column" style="width: 100vw;">
+						<div class="mb-3 mx-auto">
+							<img style="width: 200px;height: 150px;" src="/Icarus_Investments_Logo_Final.png"/>
+								</div>
+			<div class="panel pricing-table d-flex flex-column">
+		  
+			<div class="d-flex flex-row justify-content-center mb-1">
+			<label class="p-2 mb-1 ml-1 mt-1" id="icon" for="name"><i class="far fa-envelope"></i></label>
+			<input style="width: 100%;" type="text" name="name" id="lgneml" placeholder="Email" required/>
+			</div>
+			<div class="d-flex flex-row justify-content-center">
+			<label class="p-2 ml-1 mt-1" id="icon" for="name"><i class="fas fa-key"></i></label>
+			<input style="width: 100%;" type="password" name="name" id="lgnpwd" placeholder="Password" required/>
+    </div>
+    <a id="fp" data-toggle="modal" data-target="#exampleModalCenter" class="pt-1 pl-1" href="#">Forgot password?</a>
+    <p id="errIn" class="pt-1" style="text-align: center;color: red;"></p>
+			 <!-- <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p> -->
+			 <div class="d-flex justify-content-center">
+			 <button style="width: 100%;" id="login-Btn" class="button p-2 mt-4">Log In</button>
+			 </div>
+			
+		  </div>
+		</div>
+		</div>
+		  </li>
+		  </ul>
+		  </div>
+		</div>
+    <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+      
+            <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="panel pricing-table container">
+        <div class="d-flex flex-column container pt-4">
+          <h4 class="mb-4" style="border-bottom: 5px solid;"><i class="fas fa-info-circle"></i> Forgot your password?</h4>
+          <div class="d-flex flex-row justify-content-center mb-1">
+            <label class="p-2 mb-1 ml-1 mt-1" id="icon1" for="name"><i id="sl1" class="far fa-envelope"></i></label>
+            <input style="width: 100%;" type="text" id="verifyeml" placeholder="Email" required/>
+            </div>
+            <p class="pt-1" style="text-align: left;">Enter your login e-mail to recieve a password reset link.</p>
+            <p id="errfp" class="pt-1" style="text-align: center;color: red;"></p>
+            <div class="d-flex justify-content-center">
+              <button style="width: 100%;" id="reset-Btn" class="button p-2 mt-4">Send</button>
+            </div>
+        </div>
+      </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="vp" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+      
+            <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="panel pricing-table container">
+        <div class="d-flex flex-column container pt-4">
+          <h4 class="mb-3" style="border-bottom: 5px solid;">Verify Phone Number</h4>
+          <div class="d-flex flex-row justify-content-center mb-1">
+            <input type="text" name="token" id="token" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" style="width: 100%;text-align: center;"/>
+            </div>
+            <p class="pt-1" style="text-align: left;">Please enter your 6-digit verification code.</p>
+            <p id="errfp" class="pt-1" style="text-align: center;color: red;"></p>
+            <div class="d-flex justify-content-center">
+              <button style="width: 100%;" id="verify-Btn" class="button p-2 mt-4">Verify</button>
+            </div>
+        </div>
+      </div>
+        </div>
+        </div>
+      </div>
+    </div>
+<script>
+
+	window.addEventListener("DOMContentLoaded", () => {
+    
+
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+    
+    document.getElementById("reset-Btn").addEventListener("click", (event) => {
+    event.preventDefault();
+    document.getElementById("reset-Btn").innerText = "";
+    document.getElementById("reset-Btn").innerHTML = `<div class="spinner-border text-warning align-self-center" role="status" style="width: 20px; height: 20px; border-width: 3px;">
+    </div>`
+    var em = document.getElementById('verifyeml').value;
+
+    firebase.auth().sendPasswordResetEmail(em).then(function() {
+  // Email sent.
+  $('#reset-Btn').css("background-color", "#228b22");
+  document.getElementById('reset-Btn').innerHTML = '<i class="fas fa-check"></i>'
+}).catch(function(error) {
+  // An error happened.
+  document.getElementById('errfp').innerHTML = "<i class='fas fa-times'></i> User does not exsist";
+  setTimeout(function() {
+              $('#reset-Btn').css("background-color", "#3a57af");
+            document.getElementById('reset-Btn').innerHTML = 'Send'
+             }, 2000);
+});
+
+  });
+
+	  document
+		.getElementById("login-Btn")
+		.addEventListener("click", (event) => {
+		  event.preventDefault();
+		  const login = document.getElementById("lgneml").value;
+		  const password = document.getElementById("lgnpwd").value;
+
+		  firebase
+			.auth()
+			.signInWithEmailAndPassword(login, password)
+			.then(({user}) => {
+			  return user.getIdToken().then((idToken) => {
+				return fetch("/sessionLogin", {
+				  method: "POST",
+				  headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+					"CSRF-Token": Cookies.get("XSRF-TOKEN"),
+				  },
+				  body: JSON.stringify({ idToken }),
+				});
+			  });
+			})
+			.then(() => {
+			  return firebase.auth().signOut();
+			})
+			.then(() => {
+			  window.location.assign("/app/main");
+			}).catch((err)=>{
+        document.getElementById('errIn').innerHTML = "<i class='fas fa-times'></i> Email/password is incorrect.";
+      })
+		  return false;
+		});
+  });
+  </script>
+</body>
+</html>

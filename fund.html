@@ -1,0 +1,189 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Icarus Investments</title>
+        <script src="https://kit.fontawesome.com/83a5399452.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/themes/splide-skyblue.min.css">
+		<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+        <script src="/__/firebase/init.js"></script>
+        <link rel="stylesheet" href="/subcard2.css">
+        <link rel="stylesheet" href="/addapp.css">
+        <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Oswald', sans-serif;
+                background-image: url('clouds-anim.svg');
+                background-size: 100%;
+            }
+a {
+    color: white;
+    font-weight: bold;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+
+    background-color: black;
+}
+.form__label {
+  font-size: 1rem;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  transform: translateY(0rem);
+}
+
+.form__input {
+  color: #000000;
+  font-size: 1rem;
+    margin: 0 auto;
+  border-radius: 0.3rem;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid black;
+  width: 90%;
+  display: block;
+  transition: all 0.3s;
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
+}
+        </style>
+    </head>
+
+    <body>
+        <!-- <button onclick="history.back(-1)">Back</button> -->
+        <div class="alert alert-danger" id="alert-error-https" style="display: none">
+            You can run this example only over HTTPS connection.
+          </div>
+        <div class="mt-3 d-flex flex-row justify-content-between" style="width: 100vw;color: black;">
+            <div class="d-flex flex-row my-auto ml-2">
+                <h3 id="address"></h3>
+            </div>
+            <div class="my-auto">
+                <h3 id="balance"></h3>
+            </div>
+            <div id="prepare">
+            <div class="my-auto mr-2">
+                <button id="btn-connect" class="btn" style="width: auto;background-color: #f1bd2e;color: white;border-radius: 15px;font-weight: bold;">Connect</button>
+            </div>
+            </div>
+            <div id="connected" style="display: none" class="container text-truncate d-flex flex-row-reverse mx-auto justify-content-between">
+            <button class="btn btn-primary" style="height: fit-content;width:fit-content;border-radius: 15px;font-weight: bold;background-color: #f1bd2e;color: white;" id="btn-disconnect">
+                Disconnect wallet
+              </button>
+              <div id="network" class="d-flex flex-column">
+                <p>
+                  <strong>Connected blockchain:</strong> <span id="network-name"></span>
+                </p>
+  
+                <p>
+                  <strong>Selected account:</strong> <span id="selected-account"></span>
+                </p>
+  
+              </div>
+              <table class="table table-listing">
+                <thead>
+                  <th>ETH balance</th>
+                </thead>
+  
+                <tbody id="accounts">
+                </tbody>
+              </table>
+            </div>
+
+            <!-- We use simple <template> templating for the example -->
+    <div id="templates" style="display: none">
+        <template id="template-balance">
+          <tr>
+            <td class="balance"></td>
+          </tr>
+        </template>
+      </div>
+  
+      
+        </div>
+        <div class="container my-3">
+            <span class="pricing-price mb-3 mx-auto pl-3 pr-3" style="width: fit-content;border-bottom: 5px solid;color: #FF7518;"><i class="fab fa-ethereum"></i> ICRS</span>
+            <p style="text-align: center;">Icarus Investments Token</p>
+        <ul class="faq-table nav nav-pills mb-3 justify-content-center mx-auto" style="width:fit-content;flex-direction: row;" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Buy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Sell</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-approve" role="tab" aria-controls="pills-approve" aria-selected="false">Stake</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Transfer</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="panel faq-table d-flex justify-content-center" style="z-index: 0;">
+                    <input id="buy" placeholder="amount of tokens to buy" type="text" class="form__input" value style="text-align: center;">
+                    <label for="buy" class="form__label">amount of tokens to buy</label>
+                    <button class="btn mt-3" style="font-weight: bold;width: auto;background-color: #f1bd2e;color: white;border-radius: 10px;font-weight: bold;">Buy</button>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="panel faq-table d-flex justify-content-center form__group" style="z-index: 0;">
+                    <input id="sell" placeholder="amount of tokens to sell" type="text" class="form__input" value style="text-align: center;">
+                    <label for="sell" class="form__label">amount of tokens to sell</label>
+                    <button class="btn mt-3" style="width: auto;background-color: #f1bd2e;color: white;border-radius: 10px;font-weight: bold;">Sell</button>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-approve" role="tabpanel" aria-labelledby="pills-approve-tab">
+                <div class="panel faq-table d-flex justify-content-center" style="z-index: 0;">
+                    <input id="approve" placeholder="amount of tokens to stake" type="text" class="form__input" value style="text-align: center;">
+                    <label for="approve" class="form__label">amount of tokens to stake</label>
+                    <button class="btn mt-3" style="width: auto;background-color: #f1bd2e;color: white;border-radius: 10px;font-weight: bold;">Stake</button>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="panel faq-table d-flex justify-content-center" style="z-index: 0;">
+                    <input id="transfer" placeholder="recipient address" type="text" class="form__input" value style="text-align: center;">
+                    <label for="transfer" class="form__label">recipient address</label>
+                    <button class="btn mt-3" style="width: auto;background-color: #f1bd2e;color: white;border-radius: 10px;font-weight: bold;">Transfer</button>
+                </div>
+            </div>
+          </div>
+          </div>
+          <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+
+    <!-- This is our example code -->
+    <script type="text/javascript" src="./wallet.js"></script>
+    </body>
+</html>

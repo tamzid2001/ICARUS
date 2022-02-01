@@ -1,0 +1,140 @@
+<li class="container d-flex justify-content-end mt-2 dropdown language-selector">  
+    <a style="text-decoration: none;" class="dropdown-toggle" data-bs-toggle="dropdown" data-close-others="true">
+      <img id="current-lan" style="width: 35px;" src="https://img.icons8.com/color/50/000000/great-britain-circular.png"/>
+    </a>
+    <ul id="lan" class="dropdown-menu" style="width:fit-content;height: 150px;overflow-y: scroll;">
+      <li value="du">
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/germany-circular.png"/>
+          <span>Deutsch</span>
+        </a>
+      </li>
+      <li class="active" value="en">
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/50/000000/great-britain-circular.png"/>
+          <span>English</span>
+        </a>
+      </li>
+      <li value="fr">
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/france-circular.png"/>
+          <span>François</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/china-circular.png"/>
+          <span>简体中文</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/spain2-circular.png"/>
+          <span>Español</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/thailand-circular.png"/>
+          <span>ไทย</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/indonesia-circular.png"/>
+          <span>Indonesia</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/south-korea-circular.png"/>
+          <span>한국어</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/brazil-circular.png"/>
+          <span>Português</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/vietnam-circular.png"/>
+          <span>Tiếng Việt</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/russian-federation.png"/>
+          <span>Русский</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/saudi-arabia-circular.png"/>
+          <span>عربى</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/malaysia-circular.png"/>
+          <span>Melayu</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/italy-circular.png"/>
+          <span>Italiano</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/bulgaria-circular.png"/>
+          <span>Български</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/color/48/000000/croatia-circular.png"/>
+          <span>Hrvatski</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img style="width: 35px;" src="https://img.icons8.com/fluency/48/000000/china-circular.png"/>
+          <span>繁體中文</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <a href="/app/main" style="width: 100%;" class="btn btn-primary my-auto"><i class="mt-1 mb-1 pr-2 fas fa-chart-line"></i>&nbsp;<strong>Forward Test</strong><i class="fas fa-chevron-right pt-1" style="float: right;"></i></a>
+
+                    <!--<button id="lifetime" class="btn mx-auto mb-3" style="width: 50vw;background-color: #FF7518;color: white;font-weight: bold;font-size: 24px;border-radius: 28px;">Lifetime</button>-->
+                  <!--<a href="/fund" class="btn mx-auto my-3" style="width: 50vw;background-color: #FF7518;color: white;font-weight: bold;font-size: 24px;border-radius: 28px;">Invest with ETH</a>-->
+
+                  <div class="dropdown mx-auto" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button data-i18n-key="money-2" id="dp" class="btn mx-auto dropdown-toggle" style="width: 50vw;background-color: #FF7518;color: white;font-weight: bold;font-size: 24px;border-radius: 28px;">Fund</button>
+                    <div id="drop-menu" class="mt-2 dropdown-menu flex-column justify-content-center" style="border-radius:15px;width: 100%;display: none;" aria-labelledby="dropdownMenuButton">
+                      <input id="fundm" placeholder="amount to fund" type="number" class="form__input mt-2" style="text-align: center;" required>
+                      <label data-i18n-key="money-3" for="fundm" class="form__label">amount to fund</label>
+                      <button data-i18n-key="money-4" id="fund-button" class="mt-3 px-4 btn mx-auto d-flex justify-content-center" style="width: fit-content;background-color: #FF7518;color: white;font-weight: bold;font-size: 20px;border-radius: 28px;">Next</button>
+                    </div>
+                  </div>
+
+                  <div class="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+                    <div class="timeline__event__icon">
+                      <i class="fas fa-laptop-house"></i>
+                    </div>
+                    <div data-i18n-key="timeline-6" class="timeline__event__date">
+                      Pending
+                    </div>
+                    <div class="timeline__event__content">
+                      <div data-i18n-key="timeline-7" class="timeline__event__title">
+                        Trading Firm
+                      </div>
+                      <div class="timeline__event__description">
+                        <p data-i18n-key="timeline-8" >Create and fund your own capital account managed by <span translate="no">Icarus Investments.</span></p>
+                      </div>
+                    </div>
+                  </div>

@@ -1,0 +1,98 @@
+.loading {
+    display: flex;
+    flex-direction: row;
+    }
+    .loading__letter {
+    font-size: 40px;
+    font-weight: normal;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #fec468;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    }
+    
+    .letter {
+    font-size: 40px;
+    font-weight: normal;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #fec468;
+    }
+    
+    .loading__letter:nth-child(2) {
+    animation-delay: .1s;	
+    }
+    .loading__letter:nth-child(3) {
+    animation-delay: .2s;
+    }
+    .loading__letter:nth-child(4) {
+    animation-delay: .3s;	
+    }
+    .loading__letter:nth-child(5) {
+    animation-delay: .4s;
+    }
+    .loading__letter:nth-child(6) {
+    animation-delay: .5s;	
+    }
+    .loading__letter:nth-child(7) {
+    animation-delay: .6s;
+    }
+    .loading__letter:nth-child(8) {
+    animation-delay: .8s;
+    }
+    .loading__letter:nth-child(9) {
+    animation-delay: 1s;
+    }
+    .loading__letter:nth-child(10) {
+    animation-delay: 1.2s;
+    }
+    
+    @keyframes bounce {
+    0% {
+      transform: translateY(0px)
+    }
+    40% {
+      transform: translateY(-40px);
+    }
+    80%,
+    100% {
+      transform: translateY(0px);
+    }
+    }
+    
+    .cnttxt {
+    
+    text-align: center;
+    
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    
+    }
+    
+    .load-panel {
+      background-color: #fff;
+      border-radius: 20px;
+      width: 100%;
+      z-index: 10;
+      padding: 30px;
+    }
+    
+    .faq-table {
+      box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+    }
+    
